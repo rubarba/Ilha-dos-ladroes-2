@@ -166,7 +166,7 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .v.diag>.box{clip-path:var(--clip)}
 .v.diag>.seam{display:none}
 .dseam{position:absolute;left:0;top:0;width:100%;z-index:6;pointer-events:none;overflow:visible}
-.seam{position:absolute;left:0;right:0;height:5px;top:-2px;z-index:6;pointer-events:none;display:block;background:#000}
+.seam{position:absolute;left:0;right:0;height:10px;top:-5px;z-index:6;pointer-events:none;display:block;background:#000}
 .box{position:relative;width:100%;aspect-ratio:9/16;background:
   repeating-linear-gradient(135deg,transparent 0 16px,rgba(255,255,255,.02) 16px 17px),var(--panel);overflow:clip;will-change:filter,transform}
 .box.r921{aspect-ratio:9/21}
@@ -1228,7 +1228,7 @@ function gen(id,src,mode){
 let seamN=0;function seamSVG(){return '<i class="seam" aria-hidden="true"></i>'}
 function diagJoin(v,dir,k=.065){const w=v.querySelector('.box').offsetWidth,d=Math.max(3,Math.round(w*k));v.classList.add('diag');v.style.setProperty('--dg',d+'px');
   v.style.setProperty('--clip',dir>0?`polygon(0 ${d}px,100% 0,100% 100%,0 100%)`:`polygon(0 0,100% ${d}px,100% 100%,0 100%)`);
-  v.insertAdjacentHTML('beforeend',`<svg class="dseam" viewBox="0 0 ${w} ${d}" style="height:${d}px" aria-hidden="true"><line x1="0" y1="${dir>0?d:0}" x2="${w}" y2="${dir>0?0:d}" stroke="#000" stroke-width="5"/></svg>`)}
+  v.insertAdjacentHTML('beforeend',`<svg class="dseam" viewBox="0 0 ${w} ${d}" style="height:${d}px" aria-hidden="true"><line x1="0" y1="${dir>0?d:0}" x2="${w}" y2="${dir>0?0:d}" stroke="#000" stroke-width="10" stroke-linecap="square"/></svg>`)}
 document.body.classList.add('clean');
 // caixas de legenda justas ao texto (sem espaço vazio à direita)
 function tightBoxes(){if(!document.body.classList.contains('boxcap'))return;
