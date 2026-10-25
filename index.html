@@ -1226,7 +1226,7 @@ function gen(id,src,mode){
  ['tw','storm'],['t1b','storm'],['t3','storm'],['p1','calm'],['p1b','calm'],['pf','calm'],['p2','calm'],['p3','sea'],['p4','sea'],['p5','calm'],['pw','calm'],['g2','calm'],['p6','calm'],['p6b','calm'],['p7','calm'],['g1','sea']].forEach(([id,m])=>gen(id,(id==='f1x'?'f1':id)+'.webp',m));
 // costura desenhada à mão entre imagens coladas: traço de pincel a tinta
 let seamN=0;function seamSVG(){return '<i class="seam" aria-hidden="true"></i>'}
-function diagJoin(v,dir){const w=v.querySelector('.box').offsetWidth,d=Math.round(w*.065);v.classList.add('diag');v.style.setProperty('--dg',d+'px');
+function diagJoin(v,dir,k=.065){const w=v.querySelector('.box').offsetWidth,d=Math.max(3,Math.round(w*k));v.classList.add('diag');v.style.setProperty('--dg',d+'px');
   v.style.setProperty('--clip',dir>0?`polygon(0 ${d}px,100% 0,100% 100%,0 100%)`:`polygon(0 0,100% ${d}px,100% 100%,0 100%)`);
   v.insertAdjacentHTML('beforeend',`<svg class="dseam" viewBox="0 0 ${w} ${d}" style="height:${d}px" aria-hidden="true"><line x1="0" y1="${dir>0?d:0}" x2="${w}" y2="${dir>0?0:d}" stroke="#000" stroke-width="5"/></svg>`)}
 document.body.classList.add('clean');
@@ -1253,7 +1253,8 @@ document.querySelectorAll('.box .id').forEach(e=>{if(e.textContent.includes('por
 {const unit=e=>e.matches('.pin')?e.querySelector('.pinin'):e.matches('.v')?e:null;
   const ok=v=>v&&!v.matches('.framed,.frozen,.todo,.capout')&&v.querySelector('.box.real');
   let prev=null;[...document.querySelectorAll('main > *')].forEach(e=>{const v=unit(e);if(v&&v.matches('.todo'))return;
-    if(ok(v)&&ok(prev)){prev.classList.add('jb');v.classList.add('jt');if(!v.classList.contains('diag'))v.insertAdjacentHTML('afterbegin',seamSVG())}
+    if(ok(v)&&ok(prev)){prev.classList.add('jb');v.classList.add('jt');const i=++seamN,k=.014+((i*37)%11)/10*.016,dir=(i*5)%3===0?1:(i%2?1:-1);
+      setTimeout(()=>{if(!v.classList.contains('diag'))diagJoin(v,dir,k)},0)}
     prev=v})}
 const sb=document.getElementById('sndbtn'),ms=document.getElementById('mSound');
 function syncSnd(){sb.setAttribute('aria-pressed',ms.getAttribute('aria-pressed'))}
