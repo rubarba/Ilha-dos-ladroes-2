@@ -122,6 +122,7 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.cue{animation:none}}
 .resume{position:fixed;z-index:35;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);display:flex;gap:8px;align-items:center;
   background:rgba(7,9,12,.88);border:1px solid var(--line);border-radius:28px;padding:6px 6px 6px 16px;font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+.resume[hidden]{display:none!important}
 .resume button{font-family:var(--serif);font-size:15px;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:20px;padding:6px 12px;cursor:pointer}
 .cover .bill{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);display:flex;flex-direction:column;gap:6px;align-items:center}
 .cover .bill span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
