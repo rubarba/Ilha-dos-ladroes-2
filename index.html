@@ -158,7 +158,7 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 
 /* imagens */
 .v{position:relative}
-.v.beat{margin-block:10vh}
+.v.beat{margin-block:0}
 /* imagens seguidas: fundem-se uma na outra (dissolve), sem junta dura */
 .v.beat.jb{margin-bottom:0}.v.beat.jt{margin-top:0}
 .v.diag{margin-top:calc(-1*var(--dg))!important}
@@ -211,8 +211,8 @@ body.noonom .onom{display:none}
 @keyframes hit{0%{translate:0 0}20%{translate:-5px 3px}40%{translate:4px -3px}60%{translate:-3px 2px}80%{translate:2px -1px}100%{translate:0 0}}
 @media (prefers-reduced-motion:reduce){.box.hit{animation:none}}
 /* imagens pequenas (faixas e insertos): legenda fora, por baixo, no negro */
-.v.capout{padding-bottom:120px!important}
-.v.framed.capout{padding-bottom:calc(6vh + 120px)!important}
+.v.capout{padding-bottom:96px!important}
+.v.framed.capout{padding-bottom:calc(8vh + 96px)!important}
 .v.capout .cap{opacity:1!important;transform:none!important}
 .v.capout>.box{overflow:visible}
 .v.capout .cap,.v.capout .pcap{top:calc(100% + 18px)!important;bottom:auto!important;text-shadow:none;font-size:clamp(20px,5.8vw,25px)}
@@ -234,7 +234,7 @@ body.noonom .onom{display:none}
 .cap.bot{bottom:16%;transform:translateY(8px)}
 .cap.on{opacity:1;transform:none}
 /* moldura: só como pontuação */
-.framed{padding:6vh 7.5%}
+.framed{padding:8vh 7.5%}
 .framed .box{aspect-ratio:4/5}
 .frozen{padding:6vh 7%}
 .box.real::after{content:"";position:absolute;inset:0;border-top:4px solid #000;border-bottom:4px solid #000;pointer-events:none;z-index:5}
@@ -362,209 +362,170 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
 
   <div class="ch pad" data-snd="tempestade">1 · Tempestade</div>
 
-  <div class="pin" data-steps="3">
-  <div class="v pinin"><div class="box real" id="tw" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">01 · T1 · a tempestade</span>
+  <div class="pin" data-steps="2">
+  <div class="v pinin"><div class="box real" id="tw" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">01 · T1 · a tempestade</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:5%;right:4%;--r:-7deg">BRRRUUM!</span>
-    
-    <div class="pcap ctx on">Quatro barcos. Uma ilha. Uma noite má.</div>
-    <div class="pcap">Navego com António de Faria.</div>
-    <div class="pcap">Corsário. Bom a lutar, péssimo a perder.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div><div class="swh">‹ desliza ›</div></div>
-    <div class="notes pad"><b>Anima</b><span>imagem presa: cada scroll troca a legenda</span></div></div>
+    <div class="pcap ctx on">Quatro juncos à caça de um pirata.</div>
+    <div class="pcap">Há sete meses que lhe seguimos o rasto.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div><div class="swh">‹ desliza ›</div></div></div>
   </div>
 
-  <div class="v"><div data-fx="coracao" class="box real" id="f1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">02 · F1 · Faria ao leme</span>
+  <div class="pin" data-steps="2">
+  <div class="v pinin"><div data-fx="coracao" class="box real" id="f1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">02 · F1 · António de Faria</span>
     <canvas class="art"></canvas>
-    <div class="cap bot">Há sete meses que caçamos Coja Acém.</div></div>
-    <div class="notes pad"><b>Anima</b><span>rolamento, chuva, raio com trovão</span></div></div>
+    <div class="pcap on">António de Faria, o nosso capitão.</div>
+    <div class="pcap">Corsário. Bom a lutar, péssimo a perder.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
+  </div>
 
   <div class="pin" data-steps="3">
   <div class="v pinin"><div class="box real" id="c1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">03 · C1 · Coja Acém</span>
     <canvas class="art"></canvas>
-    <div class="pcap on">Ele.</div>
-    <div class="pcap">O pirata mais temido destes mares.</div>
-    <div class="pcap">Roubou-lhe tudo.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração lenta, ameaça</span></div></div>
+    <div class="pcap on">O pirata: Coja Acém.</div>
+    <div class="pcap">O mais temido destes mares.</div>
+    <div class="pcap">Roubou a fortuna do Faria e matou-lhe os homens.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div></div>
   </div>
 
-
-
-  <div class="v beat"><div class="box real" id="f1b" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">04 · F1b · olhos do Faria</span>
+  <div class="v beat"><div class="box real" id="f1b" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">04 · F1b · olhos do Faria</span>
     <canvas class="art"></canvas>
-    <div class="cap bot">O Faria quer tudo de volta. Com juros.</div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração, chuva, raio</span></div></div>
+    <div class="cap bot">O Faria quer tudo de volta. Com juros.</div></div></div>
 
   <div class="pin top" data-steps="2">
-  <div class="v pinin"><div class="box real" id="t2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">05 · T2 · o convés</span>
+  <div class="v pinin"><div class="box real" id="t2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">05 · T2 · o convés</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:30%;left:4%;--r:-10deg">VUUUUSH</span>
-    <div class="pcap on">Esta noite, é o mar que nos caça.</div>
-    <div class="pcap">O vento muda. Ninguém gosta disto.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>rolamento, chuva, raio</span></div></div>
+    <div class="pcap on">Mas esta noite, é o mar que nos caça.</div>
+    <div class="pcap">O vento muda. Ninguém gosta disto.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="pin" data-steps="2">
-  <div class="v pinin"><div class="box real" id="t3" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">06 · T3 · o Vasco reza</span>
+  <div class="pin top" data-steps="3">
+  <div class="v pinin"><div class="box real" id="t3" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">06 · T3 · o Vasco reza</span>
     <canvas class="art"></canvas>
-    <div class="pcap on">O velho Vasco reza há uma hora.</div>
+    <div class="pcap on">O velho Vasco reza há uma hora.</div>
     <div class="pcap">Nunca o tinha visto rezar.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>rolamento, chuva, raio ao fundo</span></div></div>
+    <div class="pcap">Rezo também. Por via das dúvidas.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div></div>
   </div>
 
-  <div class="pin" data-steps="2">
-  <div class="v pinin"><div class="box real" id="fn1" style="aspect-ratio:896/1200"><div class="shade"></div><span class="id">08 · FN1 · o Fernão reza</span>
-    <canvas class="art"></canvas>
-    <div class="pcap on">Rezo também.</div>
-    <div class="pcap">Por via das dúvidas.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração, chuva, raio</span></div></div>
-  </div>
-
-  <div class="v"><div data-fx="coracao" class="box real" id="t4" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">09 · T4 · carga ao mar</span>
+  <div class="v"><div data-fx="coracao" class="box real" id="t4" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">07 · T4 · carga ao mar</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:6%;right:5%;--r:8deg">CHAAAP!</span>
-    <div class="cap bot">A carga vai ao mar. A fortuna também.</div></div>
-    <div class="notes pad"><b>Anima</b><span>rolamento, chuva, raio com trovão</span></div></div>
+    <div class="cap bot">A carga vai ao mar. A fortuna também.</div></div></div>
 
   <div class="pin" data-steps="2">
-  <div class="v pinin"><div data-fx="coracao" class="box real" id="p0" style="aspect-ratio:896/1200"><div class="shade"></div><span class="id">11 · P0 · o piloto</span>
+  <div class="v pinin"><div data-fx="coracao" class="box real" id="p0" style="aspect-ratio:896/1200"><div class="shade"></div><span class="id">08 · P0 · o piloto</span>
     <canvas class="art"></canvas>
-    <div class="pcap on">O piloto grita o nome da ilha.</div>
+    <div class="pcap on">O piloto grita o nome da ilha.</div>
     <div class="pcap">Ilha dos Ladrões. Promissor.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>rolamento, raio, chuva</span></div></div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="v"><div class="box" style="aspect-ratio:9/16"><div class="shade"></div><span class="id">11b · por fazer</span>
-    <div class="see"><span>Plano geral da ilha na tempestade.</span></div></div></div>
+  <div class="v"><div class="box" style="aspect-ratio:9/16"><div class="shade"></div><span class="id">08b · por fazer</span>
+    <div class="see"><span>Plano geral da ilha na tempestade.</span></div></div></div>
 
-
-  <div class="v beat"><div data-fx="coracao" class="box real" id="f2" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">12 · F2 · o grito</span>
+  <div class="v beat"><div data-fx="coracao" class="box real" id="f2" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">09 · F2 · o grito</span>
     <canvas class="art"></canvas>
-    <span class="onom" style="top:8%;right:3%;--r:6deg">AAAAH!</span></div>
-    <div class="notes pad"><b>Anima</b><span>tremor, chuva, raio</span></div></div>
+    <span class="onom" style="top:8%;right:3%;--r:6deg">AAAAH!</span></div></div>
 
-  <div class="v"><div data-fx="coracao" class="box real" id="rk" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">12b · as rochas aproximam-se</span>
-    <canvas class="art"></canvas></div>
-    <div class="notes pad"><b>Anima</b><span>rolamento forte, mar, chuva, raio com trovão</span></div></div>
-
-  <div class="v" data-snd="rochas"><div data-fx="coracao" data-vib="70,50,140" class="box real" id="rocks" data-k="seco" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">T5 · 9:16 · imagem real</span>
+  <div class="v" data-snd="rochas"><div data-fx="coracao" data-vib="70,50,140" class="box real" id="rocks" data-k="seco" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">10 · T5 · as rochas</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:22%;left:3%;--r:-6deg">KRA-KOOM!</span>
-    <div class="cap top">As rochas estão perto. Demasiado perto.</div></div>
-    <div class="notes pad"><b>Anima</b><span>espuma a rebentar nas rochas, rolamento, raio, chuva</span><b>Scroll</b><span>a imagem treme enquanto desces</span><b>Olhos</b><span>bordas escurecem ao ritmo do coração</span><b>Vibra</b><span>raio duplo (Android)</span><b>Som</b><span>trovão duplo; coração entra</span></div></div>
+    <div class="cap top">As rochas estão perto. Demasiado perto.</div></div></div>
 
-  <div class="v framed"><div data-fx="coracao" class="box real" id="a1" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">A1 · 4:5 · imagem real</span>
-    <canvas class="art"></canvas>
-    <div class="cap bot">Agarro-me ao que posso.</div></div>
-    <div class="notes pad"><b>Anima</b><span>mãos a tremer e a apertar, água a escorrer, mar a mexer atrás, raio</span></div></div>
-
-  <div class="v" data-snd="vaga"><div data-fx="coracao tunel" class="box real" id="a2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">A2 · 9:21 · imagem real</span>
+  <div class="pin" data-steps="2">
+  <div class="v pinin" data-snd="vaga"><div data-fx="coracao tunel" class="box real" id="a2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">11 · A2 · a vaga</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:6%;left:4%;--r:-9deg">VRRUUSH!</span>
-    <div class="cap bot">Não largues.</div></div>
-    <div class="notes pad"><b>Scroll</b><span>a vaga aproxima-se e a imagem roda à medida que desces</span><b>Anima</b><span>vaga a ondular, espuma a cair da crista, raios, chuva forte</span><b>Olhos</b><span>visão em túnel</span></div></div>
+    <div class="pcap on">Agarro-me ao que posso.</div>
+    <div class="pcap">Não largues. Não largues.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
+  </div>
 
   <div class="v frozen" data-snd="crac"><div data-vib="220" class="box" data-k="seco" style="aspect-ratio:768/1376;background:#fff"><div class="shade"></div><img src="crac.webp" loading="lazy" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-    <span class="caixa">E depois, a queda.</span></div>
-    <div class="notes pad"><b>Imagem</b><span>congelada, sem animação</span><b>Som</b><span>golpe seco; silvo</span><b>Vibra</b><span>impacto longo (Android)</span></div></div>
+    <span class="caixa">E depois, a queda.</span></div></div>
 
-  <div class="v" data-snd="agua"><div data-fx="sal coracao" data-vib="90,60,90" class="box real" id="s1" style="aspect-ratio:9/25;background:#000"><div class="shade"></div><span class="id">S1 · 9:21 + prolongado em código</span>
+  <div class="pin" data-steps="2">
+  <div class="v pinin" data-snd="agua"><div data-fx="sal coracao" data-vib="90,60,90" class="box real" id="s1" style="aspect-ratio:9/25;background:#000"><div class="shade"></div><span class="id">12 · S1 · debaixo de água</span>
     <canvas class="art"></canvas>
-    <div class="cap bot">Não respires.</div></div>
-    <div class="notes pad"><b>Anima</b><span>superfície a ondular, raios de luz, bolhas a subir, destroços a afundar devagar; depois o negro continua em código</span><b>Olhos</b><span>sal: bordas ardem e desfocam</span><b>Som</b><span>tudo abafa; coração acelera</span><b>Vibra</b><span>entrada na água (Android)</span></div></div>
+    <div class="pcap on">Caio ao mar.</div>
+    <div class="pcap">Prendo a respiração e conto. Perco a conta.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
+  </div>
 
-  <div class="say pad" data-snd="silencio" style="min-height:22vh"><p>E depois, nada.</p></div>
-  <div class="say pad" style="min-height:40vh"><div class="carto" data-carto="rosa"></div><i>negro longo · tempestade desaparece · silêncio · coração a abrandar · ondas e gaivotas entram antes da imagem</i></div>
-  <div class="say it pad ctxsay" data-tint="manha" style="min-height:27vh"><span class="yb">Na manhã seguinte…</span><p>De manhã…</p></div>
+  <div class="say pad" data-snd="silencio" style="min-height:40vh"><p>E depois, nada.</p></div>
+  <div class="say pad" style="min-height:40vh"><div class="carto" data-carto="rosa"></div></div>
+  <div class="say it pad ctxsay" data-tint="manha" style="min-height:40vh"><span class="yb">Na manhã seguinte…</span><p>Na manhã seguinte…</p></div>
 
   <div class="ch pad" data-snd="praia">2 · Praia</div>
 
-  <div class="v"><div data-fx="sal" class="box real" id="p1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">18 · P1 · o céu</span>
+  <div class="v"><div data-fx="sal" class="box real" id="p1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">13 · P1 · o céu</span>
     <canvas class="art"></canvas>
-    <div class="cap bot">Ainda respiro.</div></div>
-    <div class="notes pad"><b>Anima</b><span>nuvens e luz a respirar</span></div></div>
+    <div class="cap bot">Ainda respiro.</div></div></div>
 
-  <div class="v beat"><div data-fx="sal" class="box real" id="p1b" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">19 · P1b · os olhos a abrir</span>
-    <canvas class="art"></canvas></div>
-    <div class="notes pad"><b>Anima</b><span>respiração</span></div></div>
+  <div class="v beat"><div data-fx="sal" class="box real" id="p1b" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">14 · P1b · os olhos a abrir</span>
+    <canvas class="art"></canvas></div></div>
 
-  <div class="pin" data-steps="3">
-  <div class="v pinin"><div class="box real" id="pf" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">20 · PF · o Fernão</span>
+  <div class="v"><div class="box real" id="pf" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">15 · PF · o Fernão</span>
     <canvas class="art"></canvas>
-    <div class="pcap on">Estou vivo.</div>
-    <div class="pcap">Não sei como.</div>
-    <div class="pcap">Nem sei onde.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração ofegante</span></div></div>
-  </div>
-
-  <div class="pin" data-steps="3">
-  <div class="v pinin"><div class="box real" id="p2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">21 · P2 · a praia</span>
-    <canvas class="art"></canvas>
-    <div class="pcap on">Do barco, sobram tábuas.</div>
-    <div class="pcap">Da carga, nada.</div>
-    <div class="pcap">Da tripulação… vamos contando.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração, mar a ir e vir</span></div></div>
-  </div>
-
-  <div class="v framed"><div class="box real" id="p3" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">22 · P3 · as mãos</span>
-    <canvas class="art"></canvas>
-    <div class="cap bot">As mãos sangram. Bom sinal: ainda as tenho.</div></div>
-    <div class="notes pad"><b>Anima</b><span>água a ir e vir</span></div></div>
-
-  <div class="v framed"><div class="box real" id="p4" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">23 · P4 · o terço</span>
-    <canvas class="art"></canvas>
-    <div class="cap bot">O terço do Vasco. O Vasco, não.</div></div>
-    <div class="notes pad"><b>Anima</b><span>espuma a ir e vir</span></div></div>
-
-  <div class="say pad" style="min-height:34vh"><p>Ninguém fala.</p></div>
-
-  <div class="v"><div class="box real" id="p5" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">24 · P5 · o rapaz</span>
-    <canvas class="art"></canvas>
-    <div class="cap top">Ninguém fala.</div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração</span></div></div>
-
-  <div class="v"><div class="box real" id="pw" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">24b · PW · as fogueiras</span>
-    <canvas class="art"></canvas></div>
-    <div class="notes pad"><b>Anima</b><span>fogueiras a pulsar</span></div></div>
-
-  <div class="v framed"><div class="box real" id="p6" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">25 · P6 · o corvo-marinho</span>
-    <canvas class="art"></canvas>
-    <div class="cap bot">Ele olha para mim.</div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração</span></div></div>
+    <div class="cap bot">Estou vivo. Não sei como, nem sei onde.</div></div></div>
 
   <div class="pin" data-steps="2">
-  <div class="v pinin beat"><div class="box real" id="p6b" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">26 · P6b · os olhos do Fernão</span>
+  <div class="v pinin"><div class="box real" id="p2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">16 · P2 · a praia</span>
     <canvas class="art"></canvas>
-    <div class="pcap on">Eu olho para ele.</div>
-    <div class="pcap">Os dois a pensar no jantar.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div>
-    <div class="notes pad"><b>Anima</b><span>respiração</span></div></div>
+    <div class="pcap on">Do barco, sobram tábuas. Da carga, nada.</div>
+    <div class="pcap">Da tripulação… vamos contando.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="v"><div class="box real" id="p7" style="aspect-ratio:896/1200"><div class="shade"></div><span class="id">27 · P7 · o dia passa</span>
-    <canvas class="art"></canvas></div>
-    <div class="notes pad"><b>Anima</b><span>quase nada mexe</span></div></div>
-
-  <div class="say pad ctxsay" style="min-height:45vh"><div class="carto" data-carto="escala"></div><span class="yb">O dia passa devagar.<br>A fome, depressa.</span><p>O dia passa devagar. A fome, depressa.</p></div>
-
-  <div class="v" data-snd="poente"><div class="box real" id="g1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">28 · G1 · alguém</span>
+  <div class="v framed"><div class="box real" id="p3" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">17 · P3 · as mãos</span>
     <canvas class="art"></canvas>
-    <div class="cap top">Ao fim da tarde, aparece alguém.</div></div>
-    <div class="notes pad"><b>Anima</b><span>mar, brilho do sol</span></div></div>
+    <div class="cap bot">As mãos sangram. Bom sinal: ainda as tenho.</div></div></div>
 
-  <div class="v framed"><div class="box real" id="g2" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">29 · G2 · a roupa de um morto</span>
+  <div class="v framed"><div class="box real" id="p4" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">18 · P4 · o terço</span>
     <canvas class="art"></canvas>
-    <div class="cap bot">Vestido com a roupa de um morto.</div></div>
-    <div class="notes pad"><b>Anima</b><span>luz do poente</span></div></div>
+    <div class="cap bot">O terço do Vasco. O Vasco, não.</div></div></div>
 
-  <div class="say it amber pad" data-snd="fim" style="min-height:70vh"><p>Continua…</p><i>tema corta às 3 notas + golpe grave</i></div>
+  <div class="pin top" data-steps="2">
+  <div class="v pinin"><div class="box real" id="p5" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">19 · P5 · o rapaz</span>
+    <canvas class="art"></canvas>
+    <div class="pcap on">Ninguém fala.</div>
+    <div class="pcap">O rapaz tem a idade que eu tinha quando saí de casa.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
+  </div>
+
+  <div class="pin top" data-steps="2">
+  <div class="v pinin"><div class="box real" id="pw" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">20 · PW · as fogueiras</span>
+    <canvas class="art"></canvas>
+    <div class="pcap on">Os que restam fazem fogo com o que o mar devolve.</div>
+    <div class="pcap">Do Faria, nem sinal.</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
+  </div>
+
+  <div class="v framed"><div class="box real" id="p6" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">21 · P6 · o corvo-marinho</span>
+    <canvas class="art"></canvas>
+    <div class="cap bot">Ele olha para mim.</div></div></div>
+
+  <div class="v beat"><div class="box real" id="p6b" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">22 · P6b · os olhos do Fernão</span>
+    <canvas class="art"></canvas>
+    <div class="cap bot">Eu olho para ele. Os dois a pensar no jantar.</div></div></div>
+
+  <div class="v"><div class="box real" id="p7" style="aspect-ratio:896/1200"><div class="shade"></div><span class="id">23 · P7 · o dia passa</span>
+    <canvas class="art"></canvas></div></div>
+
+  <div class="say pad ctxsay" style="min-height:50vh"><div class="carto" data-carto="escala"></div><span class="yb">O dia passa devagar.<br>A fome, depressa.</span><p>O dia passa devagar. A fome, depressa.</p></div>
+
+  <div class="v" data-snd="poente"><div class="box real" id="g1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">24 · G1 · alguém</span>
+    <canvas class="art"></canvas>
+    <div class="cap top">Ao fim da tarde, aparece alguém.</div></div></div>
+
+  <div class="v framed"><div class="box real" id="g2" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">25 · G2 · a roupa de um morto</span>
+    <canvas class="art"></canvas>
+    <div class="cap bot">Vestido com a roupa de um morto.</div></div></div>
+
+  <div class="say it amber pad" data-snd="fim" style="min-height:70vh"><p>Continua…</p></div>
 
   <section class="end pad"><button type="button" id="again">Ver outra vez</button></section>
 </main>
@@ -1134,7 +1095,7 @@ const LQ=(()=>{const q=[];let busy=0;const MAX=3;
   return{add(box,img,src){q.push({box,img,src});setTimeout(next,0)}};
 })();
 function animImg(id,src,draw){
-  const box=document.getElementById(id),cv=box.querySelector('.art'),g=cv.getContext('2d'),img=new Image();
+  if(!document.getElementById(id))return;const box=document.getElementById(id),cv=box.querySelector('.art'),g=cv.getContext('2d'),img=new Image();
   let W=0,H=0,vis=false;const st={box};
   new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(box);
   function fit(){const d=Math.min(2,devicePixelRatio||1);W=cv.width=Math.round(box.clientWidth*d);H=cv.height=Math.round(box.clientHeight*d)}
@@ -1280,13 +1241,16 @@ function onomStep(vh){for(const n of ONS){const r=n.box.getBoundingClientRect(),
     n.box.classList.remove('hit');void n.box.offsetWidth;n.box.classList.add('hit');try{snd.thunder(.35)}catch(_){}
     try{navigator.vibrate&&navigator.vibrate(25)}catch(_){}}
   else if(n.done&&d>vh*.65){n.done=false;n.o.classList.remove('pop')}}}
-document.querySelectorAll('main .v.beat,main .v.framed').forEach(v=>{if(v.querySelector('.cap,.pcap'))v.classList.add('capout')});
+document.querySelectorAll('main .v.framed').forEach(v=>{if(v.querySelector('.cap,.pcap'))v.classList.add('capout')});
 document.querySelectorAll('main > .v.framed').forEach((v,i)=>{if(i%2===0)v.classList.add('lt')});
 
 document.querySelectorAll('.box .id').forEach(e=>{if(e.textContent.includes('por fazer'))e.closest('.v').classList.add('todo')});
 [['f2',1],['rk',-1]].forEach(([id,d])=>{const b=document.getElementById(id);if(b)setTimeout(()=>diagJoin(b.closest('.v'),d),0)});
-{const ok=v=>v&&v.matches('.v')&&!v.matches('.framed,.frozen,.todo')&&v.querySelector('.box.real');
-  document.querySelectorAll('main > .v').forEach(v=>{let p=v.previousElementSibling;while(p&&p.matches('.todo'))p=p.previousElementSibling;if(ok(v)&&ok(p)){p.classList.add('jb');v.classList.add('jt');v.insertAdjacentHTML('afterbegin',seamSVG())}})}
+{const unit=e=>e.matches('.pin')?e.querySelector('.pinin'):e.matches('.v')?e:null;
+  const ok=v=>v&&!v.matches('.framed,.frozen,.todo')&&v.querySelector('.box.real');
+  let prev=null;[...document.querySelectorAll('main > *')].forEach(e=>{const v=unit(e);if(v&&v.matches('.todo'))return;
+    if(ok(v)&&ok(prev)){prev.classList.add('jb');v.classList.add('jt');if(!v.classList.contains('diag'))v.insertAdjacentHTML('afterbegin',seamSVG())}
+    prev=v})}
 const sb=document.getElementById('sndbtn'),ms=document.getElementById('mSound');
 function syncSnd(){sb.setAttribute('aria-pressed',ms.getAttribute('aria-pressed'))}
 sb.onclick=()=>{snd.toggle();setTimeout(syncSnd,60)};ms.addEventListener('click',()=>setTimeout(syncSnd,60));
