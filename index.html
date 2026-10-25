@@ -161,6 +161,7 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .v.beat{margin-block:0}
 /* imagens seguidas: fundem-se uma na outra (dissolve), sem junta dura */
 .v.beat.jb{margin-bottom:0}.v.beat.jt{margin-top:0}
+.v.beat.capout{margin-top:8vh;padding-bottom:calc(8vh + 96px)!important}
 .v.diag{margin-top:calc(-1*var(--dg))!important}
 .v.diag>.box{clip-path:var(--clip)}
 .v.diag>.seam{display:none}
@@ -435,14 +436,14 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <span class="onom" style="top:22%;left:3%;--r:-6deg">KRA-KOOM!</span>
     <div class="cap top">As rochas estão perto. Demasiado perto.</div></div></div>
 
-  <div class="pin" data-steps="2">
-  <div class="v pinin" data-snd="vaga"><div data-fx="coracao tunel" class="box real" id="a2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">11 · A2 · a vaga</span>
+  <div class="v" data-snd="vaga"><div data-fx="coracao tunel" class="box real" id="a2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">11 · A2 · a vaga</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:6%;left:4%;--r:-9deg">VRRUUSH!</span>
-    <div class="pcap on">Agarro-me ao que posso.</div>
-    <div class="pcap">Não largues. Não largues.</div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
-  </div>
+    <div class="cap bot">Agarro-me ao que posso.</div></div></div>
+
+  <div class="v framed"><div data-fx="coracao" class="box real" id="a1" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">11b · A1 · as mãos no mastro</span>
+    <canvas class="art"></canvas>
+    <div class="cap bot">Não largues. Não largues.</div></div></div>
 
   <div class="v frozen" data-snd="crac"><div data-vib="220" class="box" data-k="seco" style="aspect-ratio:768/1376;background:#fff"><div class="shade"></div><img src="crac.webp" loading="lazy" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
     <span class="caixa">E depois, a queda.</span></div></div>
@@ -510,10 +511,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
 
   <div class="v beat"><div class="box real" id="p6b" style="aspect-ratio:1376/768"><div class="shade"></div><span class="id">22 · P6b · os olhos do Fernão</span>
     <canvas class="art"></canvas>
-    <div class="cap bot">Eu olho para ele. Os dois a pensar no jantar.</div></div></div>
-
-  <div class="v"><div class="box real" id="p7" style="aspect-ratio:896/1200"><div class="shade"></div><span class="id">23 · P7 · o dia passa</span>
-    <canvas class="art"></canvas></div></div>
+    <div class="cap bot">Eu olho para ele. Os dois a pensar no jantar.</div></div></div>
 
   <div class="say pad ctxsay" style="min-height:50vh"><div class="carto" data-carto="escala"></div><span class="yb">O dia passa devagar.<br>A fome, depressa.</span><p>O dia passa devagar. A fome, depressa.</p></div>
 
@@ -1232,6 +1230,12 @@ function diagJoin(v,dir){const w=v.querySelector('.box').offsetWidth,d=Math.roun
   v.style.setProperty('--clip',dir>0?`polygon(0 ${d}px,100% 0,100% 100%,0 100%)`:`polygon(0 0,100% ${d}px,100% 100%,0 100%)`);
   v.insertAdjacentHTML('beforeend',`<svg class="dseam" viewBox="0 0 ${w} ${d}" style="height:${d}px" aria-hidden="true"><line x1="0" y1="${dir>0?d:0}" x2="${w}" y2="${dir>0?0:d}" stroke="#000" stroke-width="5"/></svg>`)}
 document.body.classList.add('clean');
+// caixas de legenda justas ao texto (sem espaço vazio à direita)
+function tightBoxes(){if(!document.body.classList.contains('boxcap'))return;
+  document.querySelectorAll('.cap,.pcap,.say.ctxsay .yb').forEach(el=>{el.style.width='';const r=document.createRange();r.selectNodeContents(el);
+    let mx=0;for(const q of r.getClientRects())mx=Math.max(mx,q.width);if(!mx)return;const cs=getComputedStyle(el);
+    el.style.width=Math.ceil(mx+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth)+1)+'px'})}
+addEventListener('load',tightBoxes);addEventListener('resize',()=>setTimeout(tightBoxes,50));try{document.fonts.ready.then(tightBoxes)}catch(_){}
 let BOX=true,ONOM=true;try{BOX=localStorage.getItem('boxcap')!=='0';ONOM=localStorage.getItem('onom')!=='0'}catch(_){}
 document.body.classList.toggle('boxcap',BOX);document.body.classList.toggle('noonom',!ONOM);
 // onomatopeias: entram quando a imagem chega ao meio do ecrã, com impacto
@@ -1241,13 +1245,13 @@ function onomStep(vh){for(const n of ONS){const r=n.box.getBoundingClientRect(),
     n.box.classList.remove('hit');void n.box.offsetWidth;n.box.classList.add('hit');try{snd.thunder(.35)}catch(_){}
     try{navigator.vibrate&&navigator.vibrate(25)}catch(_){}}
   else if(n.done&&d>vh*.65){n.done=false;n.o.classList.remove('pop')}}}
-document.querySelectorAll('main .v.framed').forEach(v=>{if(v.querySelector('.cap,.pcap'))v.classList.add('capout')});
+document.querySelectorAll('main .v.framed,main .v.beat').forEach(v=>{if(v.querySelector('.cap,.pcap'))v.classList.add('capout')});
 document.querySelectorAll('main > .v.framed').forEach((v,i)=>{if(i%2===0)v.classList.add('lt')});
 
 document.querySelectorAll('.box .id').forEach(e=>{if(e.textContent.includes('por fazer'))e.closest('.v').classList.add('todo')});
 [['f2',1],['rk',-1]].forEach(([id,d])=>{const b=document.getElementById(id);if(b)setTimeout(()=>diagJoin(b.closest('.v'),d),0)});
 {const unit=e=>e.matches('.pin')?e.querySelector('.pinin'):e.matches('.v')?e:null;
-  const ok=v=>v&&!v.matches('.framed,.frozen,.todo')&&v.querySelector('.box.real');
+  const ok=v=>v&&!v.matches('.framed,.frozen,.todo,.capout')&&v.querySelector('.box.real');
   let prev=null;[...document.querySelectorAll('main > *')].forEach(e=>{const v=unit(e);if(v&&v.matches('.todo'))return;
     if(ok(v)&&ok(prev)){prev.classList.add('jb');v.classList.add('jt');if(!v.classList.contains('diag'))v.insertAdjacentHTML('afterbegin',seamSVG())}
     prev=v})}
