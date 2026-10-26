@@ -171,6 +171,9 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
   repeating-linear-gradient(135deg,transparent 0 16px,rgba(255,255,255,.02) 16px 17px),var(--panel);overflow:clip;will-change:filter,transform}
 .box.r921{aspect-ratio:9/21}
 .box.real{background:#0d1218}
+.box.real::before{content:"";position:absolute;inset:0;clip-path:inset(0);background:var(--ph,none) center/cover;filter:blur(14px) brightness(.85);z-index:0;transition:opacity .6s}
+.box.real.ld::before{opacity:0}
+.box.real .art{position:relative;z-index:1}
 .box .art{position:absolute;inset:0;width:100%;height:100%;display:block}
 .box .shade{position:absolute;inset:0;background:var(--bg);opacity:0;pointer-events:none;z-index:3}
 .box .see{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 22px;
@@ -228,6 +231,9 @@ body.noonom .onom{display:none}
 .pin.swipe .swh{opacity:1}.pin.swipe.used .swh{opacity:0}
 .pcap.l{transform:translateX(-30px)}.pcap.r{transform:translateX(30px)}
 .dots i.on{background:#e9dfc4;transform:scale(1.3)}
+.hand{position:absolute;right:16%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:rgba(255,255,255,.9);border:2px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,.5);z-index:8;pointer-events:none;opacity:0;animation:hand 1.6s ease-in-out 2 .3s}
+@keyframes hand{0%{opacity:0;transform:translateX(0) scale(.8)}15%{opacity:1;transform:translateX(0) scale(1)}70%{opacity:1;transform:translateX(-120px) scale(1)}100%{opacity:0;transform:translateX(-140px) scale(.9)}}
+@media (prefers-reduced-motion:reduce){.hand{animation-duration:2.4s}}
 .pin.top .dots{top:calc(12% - 24px);bottom:auto}
 body.boxcap .pin .dots{justify-content:flex-start;padding-left:calc(6% + 6px)}
 body.boxcap .pcap.more{padding-right:30px!important;cursor:pointer}
@@ -370,7 +376,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
   <div class="ch pad" data-snd="tempestade">1 · Tempestade</div>
 
   <div class="pin" data-steps="2">
-  <div class="v pinin"><div class="box real" id="tw" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">01 · T1 · a tempestade</span>
+  <div class="v pinin"><div class="box real" id="tw" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDD0fTxbq97cRhIY+RvPfPaqVzayvcSM8TOzMSWMnXPfitZdTa4ZoikbyglUV1I4Pcdqkj1K4hjWL9wuwYwCuBWlzIxJbqaS5CGQqrHHy8YFWvsEB/hNFFSUf/Z);aspect-ratio:768/1376"><div class="shade"></div><span class="id">01 · T1 · a tempestade</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:5%;right:4%;--r:-7deg">BRRRUUM!</span>
     <div class="pcap ctx on">Quatro juncos à caça de um pirata.</div>
@@ -379,7 +385,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
   </div>
 
   <div class="pin" data-steps="2">
-  <div class="v pinin"><div data-fx="coracao" class="box real" id="f1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">02 · F1 · António de Faria</span>
+  <div class="v pinin"><div data-fx="coracao" class="box real" id="f1" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDD02K1iuEiukUh5Apy33R6mmXUcRupfs4zDvO3apIxmqF9cRG6At87FwNzDlvrWg7XrNuBVAcEKFwB+GKtSIcTAQEkHc3Q9DVkQqQCSxJ96KKEDP/Z);aspect-ratio:768/1376"><div class="shade"></div><span class="id">02 · F1 · António de Faria</span>
     <canvas class="art"></canvas>
     <div class="pcap on">António de Faria, o nosso capitão.</div>
     <div class="pcap">Corsário. Bom a lutar, péssimo a perder.</div>
@@ -387,7 +393,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
   </div>
 
   <div class="pin" data-steps="3">
-  <div class="v pinin"><div class="box real" id="c1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">03 · C1 · Coja Acém</span>
+  <div class="v pinin"><div class="box real" id="c1" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkr+FrW6UzKQzNnHfHT860RDsUKjRquOAUzVTUP9IlJlLsxRVDEcnn0rRa2hjwkskxdVAJ8selYOTsjrUI30MF9Qud6qJCFQ5AHrWj9plk+dnOT15NFFa2Rzps/9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">03 · C1 · Coja Acém</span>
     <canvas class="art"></canvas>
     <div class="pcap on">O pirata: Coja Acém.</div>
     <div class="pcap">O mais temido destes mares.</div>
@@ -395,12 +401,12 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div></div>
   </div>
 
-  <div class="v framed"><div class="box real" id="duel" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">04 · o duelo</span>
+  <div class="v framed"><div class="box real" id="duel" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCho0Fm1kWu75opBwFDgY+oPWs6RZPMfAUjJ5yRmrOlam+0MIYZERcNuXJxnP8AnNUpdXLSuxMpJYnNUridiO1tUFyyhnCgFsA8HjNKhJRTwMj+6KKKfUnof//Z);aspect-ratio:1/1"><div class="shade"></div><span class="id">04 · o duelo</span>
     <canvas class="art"></canvas>
     <div class="cap bot">O Faria quer tudo de volta. Com juros.</div></div></div>
 
   <div class="pin top" data-steps="2">
-  <div class="v pinin"><div class="box real" id="t2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">05 · T2 · o convés</span>
+  <div class="v pinin"><div class="box real" id="t2" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDL0ewSJ5VeNSdhDD1z9arNoDoxVrmyRh1VpgCPY81bF1dRRmZokzI2WlXhhx1FRtYadId8moR725bdGxOfrmqTvqiGmtCKC8mXTwobhTtGR2qo1ujsWJYE+hooqYlSP//Z);aspect-ratio:768/1376"><div class="shade"></div><span class="id">05 · T2 · o convés</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:30%;left:4%;--r:-10deg">VUUUUSH</span>
     <div class="pcap on">Mas esta noite, é o mar que nos caça.</div>
@@ -408,44 +414,44 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="v"><div class="box real" id="t3" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">06 · T3 · o Vasco reza</span>
+  <div class="v"><div class="box real" id="t3" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwChpPhw3UjhhsBUkF+Cv+IrIuUisriS33O3ltgEenUVv+HvEFrZwtG772mcqC3VeOSSe1YlxqkEk7uQpyevl/8A1qq5nYwo7mVXRgRmM5XjpTfNc5OetFFIs//Z);aspect-ratio:768/1376"><div class="shade"></div><span class="id">06 · T3 · o Vasco reza</span>
     <canvas class="art"></canvas>
     <div class="cap top">O velho Vasco reza há uma hora.</div></div></div>
 
   <div class="pin top" data-steps="2">
-  <div class="v pinin"><div class="box real" id="vc" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">06b · o Vasco de perto</span>
+  <div class="v pinin"><div class="box real" id="vc" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDMstGtks5bnULrybcdOMtu7dKzBY4yFErrk4ZV4Iz2q0k1m1pbrcl4LWQMpCtuKydmx6dqxhqNxbDyYpn2JwMOcVpczsVklckxsxZOu08ioQuR1NFFSykf/9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">06b · o Vasco de perto</span>
     <canvas class="art"></canvas>
     <div class="pcap on">Nunca o tinha visto rezar.</div>
     <div class="pcap">Rezo também. Por via das dúvidas.</div>
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="v"><div data-fx="coracao" class="box real" id="t4" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">07 · T4 · carga ao mar</span>
+  <div class="v"><div data-fx="coracao" class="box real" id="t4" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDF0HS8TiWWNUH8AkbGSPSqd3YXH2qUyQyOxYktv6+/FWXunvb7zhECc8LzjHTrn8eKI5dTCAJOAo4ALdK0uZ2K9vM7zLE2Cg6D0pWupFZgAuASPu0UUhs//9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">07 · T4 · carga ao mar</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:6%;right:5%;--r:8deg">CHAAAP!</span>
     <div class="cap bot">A carga vai ao mar. A fortuna também.</div></div></div>
 
   <div class="pin" data-steps="2">
-  <div class="v pinin"><div data-fx="coracao" class="box real" id="p0" style="aspect-ratio:896/1200"><div class="shade"></div><span class="id">08 · P0 · o piloto</span>
+  <div class="v pinin"><div data-fx="coracao" class="box real" id="p0" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAA8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDFt7Ox+zw3F60nljCoiffdifugf1rY8Ti2S1t9PsnMNvu3YKkFiB1Oeayn1g3ENr5URj+xZeMq3JbPBI74HH41dudIubxlkuJFWR/nYB8bSe1aJmbMawneDPlbVMbEqQOR681dstQmvLsibbwx5GRnj60UUiWf/9k=);aspect-ratio:896/1200"><div class="shade"></div><span class="id">08 · P0 · o piloto</span>
     <canvas class="art"></canvas>
     <div class="pcap on">O piloto grita o nome da ilha.</div>
     <div class="pcap">Ilha dos Ladrões. Promissor.</div>
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="v"><div data-fx="coracao" class="box real" id="il" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">08b · a ilha</span>
+  <div class="v"><div data-fx="coracao" class="box real" id="il" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkm+zv5UUAfMhHmZ7Cti40m1WdxGJNo6c1e07w9Y2rJc3Mm6IjKrIdhP1P58Veksj5jm3uXMRYleQev41dzOxy0uo3TymKaVpoy27bIcjn+lLF5bRgmCLv/D70UUDP/9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">08b · a ilha</span>
     <canvas class="art"></canvas></div></div>
 
-  <div class="v framed"><div data-fx="coracao" class="box real" id="f2" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">09 · F2 · o grito</span>
+  <div class="v framed"><div data-fx="coracao" class="box real" id="f2" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCzo9kNOsfOZTukb5cdemf6Vk6hrUv9opLb+ai5DNHKxKspz2J7gVtaprdlKqWVkxMituD9McHp/KuRupXfUzLfsyRgAOFYMQo6Y+nvVEnSX+gM95I6k7XO4cZ7UVqwXsF5CkyavNKpH3lKx/mAOtFPUVkeeRYge3nRRvMhXnnjir/iQDMS4Hzjk4544oooYIzLO1jmjdmyMNgBTx0FFFFAH//Z);aspect-ratio:1/1"><div class="shade"></div><span class="id">09 · F2 · o grito</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:6%;right:4%;--r:6deg">AAAAH!</span></div></div>
 
-  <div class="v" data-snd="rochas"><div data-fx="coracao" data-vib="70,50,140" class="box real" id="rocks" data-k="seco" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">10 · T5 · as rochas</span>
+  <div class="v" data-snd="rochas"><div data-fx="coracao" data-vib="70,50,140" class="box real" id="rocks" data-k="seco" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkm+zv5UUAfMhHmZ7CtW606zS4dU3hQeOatQaRp2mhLq6kaRCMpGeGb/PPFMl066u5nntGzBIxKbn5xmruRYz7eaS6Ekk7b3Ztu48lQc9PyqOGM+Uv7yQduGoopIbP/9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">10 · T5 · as rochas</span>
     <canvas class="art"></canvas>
     <span class="onom" style="top:22%;left:3%;--r:-6deg">KRA-KOOM!</span>
     <div class="cap top">As rochas estão perto. Demasiado perto.</div></div></div>
 
-  <div class="v framed" data-snd="vaga"><div data-fx="coracao" class="box real" id="a1" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">11b · A1 · as mãos no mastro</span>
+  <div class="v framed" data-snd="vaga"><div data-fx="coracao" class="box real" id="a1" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCtDDHZBrS1gSXUXOAA5ZYh3J/wqpqv+iW06SzeZcM2JHyRnir2iNDakzK74Lt5kvQH/H6VlF7O8vLqO6bHnrug3Z4Y+9UyUZdtArRb33MzHP0orpYGs4YEgkdUaIBDkdcd6KZNzPnleTUkgJ2xRHKqowBWaAZr5mckkr/jRRQNG7pccd5ZiWeNGfO3OOwooooEf//Z);aspect-ratio:1/1"><div class="shade"></div><span class="id">11b · A1 · as mãos no mastro</span>
     <canvas class="art"></canvas>
     <div class="cap bot">Agarro-me ao que posso. Não largues.</div></div></div>
 
@@ -454,7 +460,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <span class="caixa">E depois, a queda.</span></div></div>
 
   <div class="pin" data-steps="2">
-  <div class="v pinin" data-snd="agua"><div data-fx="sal coracao" data-vib="90,60,90" class="box real" id="s1" style="aspect-ratio:9/25;background:#000"><div class="shade"></div><span class="id">12 · S1 · debaixo de água</span>
+  <div class="v pinin" data-snd="agua"><div data-fx="sal coracao" data-vib="90,60,90" class="box real" id="s1" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCstjHHZs/mRKko5VV5YDnGfT2orGGqMNPI3bgflAP8P+c0VoZ2ZgAnymHuKKKKgs//2Q==);aspect-ratio:9/25;background:#000"><div class="shade"></div><span class="id">12 · S1 · debaixo de água</span>
     <canvas class="art"></canvas>
     <div class="pcap on">Caio ao mar.</div>
     <div class="pcap">Prendo a respiração e conto. Perco a conta.</div>
@@ -467,35 +473,35 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
 
   <div class="ch pad" data-snd="praia">2 · Praia</div>
 
-  <div class="v"><div data-fx="sal" class="box real" id="p1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">13 · P1 · o céu</span>
+  <div class="v"><div data-fx="sal" class="box real" id="p1" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBuk6DCbFZQEkynLIcg+1c5f6dLBezRx2sgRWIHzdq7PR01CxspbdoRIWzt/h2nvWX/AGHqExMj3BDMckbc4qlLXUix2jfKm4fkelKASM7iM+lFFSUf/9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">13 · P1 · o céu</span>
     <canvas class="art"></canvas>
     <div class="cap bot">Ainda respiro.</div></div></div>
 
-  <div class="v framed"><div data-fx="sal" class="box real" id="p1b" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">14 · P1b · os olhos a abrir</span>
+  <div class="v framed"><div data-fx="sal" class="box real" id="p1b" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDP01H1CSGVyd0ndfvAg/8A1/0rbnthpQiMVyxlkc4gbJ3+49PX0rmtIllMTqm+PzPlDoOQfr2FdBHZtBFDFqRaSNTmOQjlT3znqPrQ3YEky/HqbKuC6xn+7jOKKbJZQ3LeZYy7YSMfKOCR3FFHMhcrOK0a7ntpXEUhHeur1OZrnRJDNhymCuexoopS3LjsZiymJVRAoAA7deKKKKYj/9k=);aspect-ratio:1/1"><div class="shade"></div><span class="id">14 · P1b · os olhos a abrir</span>
     <canvas class="art"></canvas></div></div>
 
-  <div class="v"><div class="box real" id="pf" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">15 · PF · o Fernão</span>
+  <div class="v"><div class="box real" id="pf" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDWv9fihvrNbeRGt3BaZwucDjHP4mql94ukt7ySKC2heNTgM8uCePSuXkt7m4lMwkxjg5T5SB7dq3Ld5FgRSSdox93P9KLIVyhG7DPzHrUo6dTRRVCP/9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">15 · PF · o Fernão</span>
     <canvas class="art"></canvas>
     <div class="cap bot">Estou vivo. Não sei como, nem sei onde.</div></div></div>
 
   <div class="pin" data-steps="2">
-  <div class="v pinin"><div class="box real" id="p2" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">16 · P2 · a praia</span>
+  <div class="v pinin"><div class="box real" id="p2" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDppNStzayS27c8gM4IANcZfKt5ezXBuhmRs96feTiKzZIHcPvBHzkgEdOtPje2mjWSUMsjAFwGwM96og56KeQHG7iniR8feP50UVQj/9k=);aspect-ratio:768/1376"><div class="shade"></div><span class="id">16 · P2 · a praia</span>
     <canvas class="art"></canvas>
     <div class="pcap on">Do barco, sobram tábuas. Da carga, nada.</div>
     <div class="pcap">Da tripulação… vamos contando.</div>
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="v framed"><div class="box real" id="p3" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">17 · P3 · as mãos</span>
+  <div class="v framed"><div class="box real" id="p3" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCjEqpkoNqc9PvVZt5BFIFSRtzYwM8VTs7oqLk/fj48tSOSfrQkixTruAVJcDcT9w9j7UNsFFGxEYNn75V3552nANFUJfLaQlmK+gTgY9qKq5FkYlxM6PFGuAo54/GnX/FhFJ/E55/OiigZo6W/nWSs6qTnGcUUUVIH/9k=);aspect-ratio:1/1"><div class="shade"></div><span class="id">17 · P3 · as mãos</span>
     <canvas class="art"></canvas>
     <div class="cap bot">As mãos sangram. Bom sinal: ainda as tenho.</div></div></div>
 
-  <div class="v framed"><div class="box real" id="p4" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">18 · P4 · o terço</span>
+  <div class="v framed"><div class="box real" id="p4" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDVg164kHzabj/tqT/StSG8nlTJt44j23MTXL3evKqgWkOTuxl2AJ/L/GqbX147+a7mVs8I5Ax9OwqzNI6SbVb2OVl8y1UDoMUVgR3aTAu+Q5PIYjINFIZy9vNIHLbucVYlld48udx96KKYCRtJt/1sn50UUUgP/9k=);aspect-ratio:1/1"><div class="shade"></div><span class="id">18 · P4 · o terço</span>
     <canvas class="art"></canvas>
     <div class="cap bot">O terço do Vasco. O Vasco, não.</div></div></div>
 
   <div class="pin top" data-steps="2">
-  <div class="v pinin"><div class="box real" id="p5" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">19 · P5 · o rapaz</span>
+  <div class="v pinin"><div class="box real" id="p5" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCeHSNHVHk+0LtGckAjH51bTRLHYMTSY+lZ13c3TWsjQzQJuyBEE5HsT3qn5NzPiV4pNzcnDjGfzq7szsjLhu5mxubNSjPqaKKYH//Z);aspect-ratio:768/1376"><div class="shade"></div><span class="id">19 · P5 · o rapaz</span>
     <canvas class="art"></canvas>
     <div class="pcap on">Ninguém fala.</div>
     <div class="pcap">O rapaz tem a idade que eu tinha quando saí de casa.</div>
@@ -503,32 +509,32 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
   </div>
 
   <div class="pin top" data-steps="2">
-  <div class="v pinin"><div class="box real" id="pw" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">20 · PW · as fogueiras</span>
+  <div class="v pinin"><div class="box real" id="pw" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDt5o4pIWaXhQMsTxgVw2peKLS11CaCKEypG20OD1rQvfEEl1G0cgWMY5VGOcVxU9jHLO7/AGo/MSeUqkRYjjuZdpBcnIySaRD8ooooGf/Z);aspect-ratio:768/1376"><div class="shade"></div><span class="id">20 · PW · as fogueiras</span>
     <canvas class="art"></canvas>
     <div class="pcap on">Os que restam fazem fogo com o que o mar devolve.</div>
     <div class="pcap">Do Faria, nem sinal.</div>
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="v framed"><div class="box real" id="p6" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">21 · P6 · o corvo-marinho</span>
+  <div class="v framed"><div class="box real" id="p6" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDoNT1CPTrQzyKznOFRerGodH1UapG58loWXBwTkEH/APVWZ433jTLdozgrOD/46af4Okjn0vzjM0lySRJn+HngY+lTbQDo6KSikBxHivU7k3L2OVEAdeAvJ79af4YcrqsYXCiWNtwHQ4ooq/sk9Ts6KKKgo//Z);aspect-ratio:1/1"><div class="shade"></div><span class="id">21 · P6 · o corvo-marinho</span>
     <canvas class="art"></canvas>
     <div class="cap bot">Ele olha para mim.</div></div></div>
 
-  <div class="v framed"><div class="box real" id="p6b" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">22 · P6b · os olhos do Fernão</span>
+  <div class="v framed"><div class="box real" id="p6b" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDK0mBrySKRmIL9SDzkEd/xrq7u1s7LTVF1hT91Ngwz89MdDnrz0rldBjup1JhMiI52lozynvXRWdlKsqWV9NJLJkSRO3LAjtRIaMUXVxYs0PmgrnKENuyPr+n4UV1M8VkhRBbRyBV4bb7n+uaKOcXIcDot3PbTP5MhWui1eaV57WQSujthSytg4ooofxDXwkD6peQ7Y0m+VVAGVB/pRRRTshXZ/9k=);aspect-ratio:1/1"><div class="shade"></div><span class="id">22 · P6b · os olhos do Fernão</span>
     <canvas class="art"></canvas>
     <div class="cap bot">Eu olho para ele. Os dois a pensar no jantar.</div></div></div>
 
   <div class="say pad ctxsay" style="min-height:50vh"><div class="carto" data-carto="escala"></div><span class="yb">O dia passa devagar.<br>A fome, depressa.</span><p>O dia passa devagar. A fome, depressa.</p></div>
 
-  <div class="v" data-snd="poente"><div class="box real" id="g1" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">24 · G1 · alguém</span>
+  <div class="v" data-snd="poente"><div class="box real" id="g1" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC7ax6VIrNBKrqvdc8fpThc6aBjzT/3yf8ACsqG8jht2iUBXY7gBgd+KZFdxiMfvl/Ff/rVn713qUlFrY5qBm86Q723EZLZ5JNWwMcZzzRRWvUjof/Z);aspect-ratio:768/1376"><div class="shade"></div><span class="id">24 · G1 · alguém</span>
     <canvas class="art"></canvas>
     <div class="cap top">Ao fim da tarde, aparece alguém.</div></div></div>
 
-  <div class="v framed"><div class="box real" id="g2" style="aspect-ratio:1/1"><div class="shade"></div><span class="id">25 · G2 · a roupa de um morto</span>
+  <div class="v framed"><div class="box real" id="g2" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDK8TXP2vWIlLGTyYgMk9CTWGkJiLqwYI4xuC5HYdfxrdZrO4DTXSbQuSSOCx6CpLG6jtpLBY1Gx45I3JPUZz/OpvZWQ7X1Z0VtezTWdu+6TJiUHDY5AxRXPyaiiSMpEhweMZxiikoIbkc55ryMUY/KTkgUx7iRCqAjan3faiitTMlhupSnzEMc9TRRRQB//9k=);aspect-ratio:1/1"><div class="shade"></div><span class="id">25 · G2 · a roupa de um morto</span>
     <canvas class="art"></canvas>
     <div class="cap bot">Vestido com a roupa de um morto.</div></div></div>
 
-  <div class="v"><div class="box real" id="g3" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">26 · G3 · o Faria</span>
+  <div class="v"><div class="box real" id="g3" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCC51OKyltlK5DfvHAz93pgZz3rRJUnKEFTyPkY/wBa5q9826v4BBEXdQuOMBj+eK6aCX9wg2eXgY2nBIx755qW7DSucdDqFxbsojYYX5sHnmriSNIgdjgtycE0UVT3Etj/2Q==);aspect-ratio:768/1376"><div class="shade"></div><span class="id">26 · G3 · o Faria</span>
     <canvas class="art"></canvas>
     <div class="cap bot">É o Faria. Vivo, e de mau humor.</div></div></div>
 
@@ -846,9 +852,16 @@ let blurOn=true,lastY=scrollY,shake=0;
 const pins=[...document.querySelectorAll('.pin')].map(el=>{const inn=el.querySelector('.pinin');return{el,inn,n:+el.dataset.steps,k:0,caps:[...el.querySelectorAll('.pcap')],dots:[...el.querySelectorAll('.dots i')],h:0,pt:0}});
 function sizePins(){for(const pn of pins){if(pinMode==='swipe'){pn.el.style.height='';continue}pn.h=pn.inn.offsetHeight;pn.pt=Math.max(0,(innerHeight-pn.h)/2);pn.inn.style.setProperty('--pt',pn.pt+'px');pn.el.style.height=(pn.h+pn.n*innerHeight*.45)+'px'}}
 sizePins();addEventListener('resize',sizePins);
+let LEARN=false;try{LEARN=localStorage.getItem('swipeLearned')==='1'}catch(_){}
+function learned(){if(LEARN)return;LEARN=true;try{localStorage.setItem('swipeLearned','1')}catch(_){}document.querySelectorAll('.hand').forEach(h=>h.remove())}
+const HINT=new Set();
+function handStep(vh){if(LEARN||pinMode!=='swipe')return;for(const pn of pins){if(HINT.has(pn)||pn.n<2)continue;const b=pn.el.querySelector('.box'),r=b.getBoundingClientRect();
+  if(r.top<vh*.35&&r.bottom>vh*.65){HINT.add(pn);const c=pn.caps[pn.k]||pn.caps[0];const h=document.createElement('span');h.className='hand';h.setAttribute('aria-hidden','true');
+    h.style.top=(c.offsetTop+c.offsetHeight/2)+'px';b.appendChild(h);setTimeout(()=>h.remove(),3400);break}}}
+addEventListener('scroll',()=>handStep(innerHeight),{passive:true});
 function capMore(){for(const pn of pins)pn.caps.forEach((c,i)=>{if(i>=pn.caps.length-1)return;c.classList.add('more');c.style.pointerEvents='auto';
   c.addEventListener('click',e=>{e.stopPropagation();if(!c.classList.contains('on')&&pinMode!=='swipe')return;
-    if(pinMode==='swipe'){pn.k=i+1;pn.dots.forEach((x,j)=>x.classList.toggle('on',j===pn.k));pinPlace(pn,0,true);pn.el.classList.add('used')}else pinGo(pn,i+1,1)})})}
+    if(pinMode==='swipe'){learned();pn.k=i+1;pn.dots.forEach((x,j)=>x.classList.toggle('on',j===pn.k));pinPlace(pn,0,true);pn.el.classList.add('used');learned()}else pinGo(pn,i+1,1)})})}
 setTimeout(()=>{capMore();try{tightBoxes()}catch(_){}},0);
 function pinGo(pn,k,dir){k=Math.max(0,Math.min(pn.n-1,k));if(k===pn.k)return;pn.k=k;
   pn.caps.forEach((c,i)=>{c.classList.remove('l','r');if(i===k){c.classList.add(dir>0?'r':'l');void c.offsetWidth;c.classList.remove('l','r');c.classList.add('on')}else c.classList.remove('on')});
@@ -862,9 +875,9 @@ for(const pn of pins){const box=pn.el.querySelector('.box');let x0=null,y0=0,t0=
     if(!drag&&Math.abs(ddx)>8&&Math.abs(ddx)>Math.abs(ddy)*1.2){drag=true;try{box.setPointerCapture(e.pointerId)}catch(_){}}
     if(drag){dx=ddx;if((pn.k===0&&dx>0)||(pn.k===pn.n-1&&dx<0))dx*=.3;pinPlace(pn,dx,false)}});
   const end=e=>{if(pinMode!=='swipe'||x0===null)return;const w=box.offsetWidth,v=Math.abs(dx)/Math.max(1,performance.now()-t0);
-    if(drag){let k=pn.k;if(Math.abs(dx)>w*.22||v>.5)k+=dx<0?1:-1;k=Math.max(0,Math.min(pn.n-1,k));pn.k=k;pn.dots.forEach((d,i)=>d.classList.toggle('on',i===k));pinPlace(pn,0,true);pn.el.classList.add('used')}
+    if(drag){let k=pn.k;if(Math.abs(dx)>w*.22||v>.5)k+=dx<0?1:-1;k=Math.max(0,Math.min(pn.n-1,k));pn.k=k;pn.dots.forEach((d,i)=>d.classList.toggle('on',i===k));pinPlace(pn,0,true);pn.el.classList.add('used');learned()}
     else if(e&&e.type==='pointerup'&&Math.abs(e.clientX-x0)<8&&Math.abs(e.clientY-y0)<8){const r=box.getBoundingClientRect(),right=e.clientX>r.left+r.width/2;
-      pn.k=Math.max(0,Math.min(pn.n-1,pn.k+(right?1:-1)));pn.dots.forEach((d,i)=>d.classList.toggle('on',i===pn.k));pinPlace(pn,0,true);pn.el.classList.add('used')}
+      pn.k=Math.max(0,Math.min(pn.n-1,pn.k+(right?1:-1)));pn.dots.forEach((d,i)=>d.classList.toggle('on',i===pn.k));pinPlace(pn,0,true);pn.el.classList.add('used');learned()}
     x0=null;drag=false;dx=0};
   box.addEventListener('pointerup',end);box.addEventListener('pointercancel',end);
   pn.dots.forEach((d,i)=>{d.style.pointerEvents='auto';d.style.cursor='pointer';d.onclick=()=>{if(pinMode==='swipe'){pn.k=i;pn.dots.forEach((x,j)=>x.classList.toggle('on',j===i));pinPlace(pn,0,true)}else pinGo(pn,i,1)}})}
@@ -1111,7 +1124,7 @@ function animImg(id,src,draw){
   new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(box);
   function fit(){const d=Math.min(2,devicePixelRatio||1);W=cv.width=Math.round(box.clientWidth*d);H=cv.height=Math.round(box.clientHeight*d)}
   function loop(ms){requestAnimationFrame(loop);if(!vis||!W)return;g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,W,H);draw(g,img,W,H,ms,st);g.setTransform(1,0,0,1,0,0)}
-  img.onload=()=>{fit();requestAnimationFrame(loop)};addEventListener('resize',fit);
+  img.onload=()=>{fit();requestAnimationFrame(loop);setTimeout(()=>box.classList.add('ld'),120)};addEventListener('resize',fit);
   LQ.add(box,img,src);
 }
 function rainLines(g,W,H,arr,n,alpha,slant){
@@ -1286,12 +1299,22 @@ sb.onclick=()=>{snd.toggle();setTimeout(syncSnd,60)};ms.addEventListener('click'
 document.getElementById('start').addEventListener('click',()=>setTimeout(syncSnd,120));
 let uiY=scrollY;addEventListener('scroll',()=>{const y=scrollY,d=y-uiY;if(Math.abs(d)>8){document.body.classList.toggle('hideui',d>0&&y>innerHeight*.6&&!menu.classList.contains('on'));uiY=y}},{passive:true});
 // retomar leitura
-(()=>{const K='lerPos';let saved=0;try{saved=+localStorage.getItem(K)||0}catch(_){}
+try{history.scrollRestoration='manual'}catch(_){}
+(()=>{const K='ler:ep6';let sv=null;try{sv=JSON.parse(localStorage.getItem(K)||'null')}catch(_){}
   const box=document.getElementById('resume');
-  if(saved>innerHeight*1.5&&scrollY<50){box.hidden=false;setTimeout(()=>box.hidden=true,9000)}
-  document.getElementById('rGo').onclick=()=>{box.hidden=true;scrollTo({top:saved,behavior:'smooth'})};
-  document.getElementById('rNo').onclick=()=>{box.hidden=true;try{localStorage.removeItem(K)}catch(_){}};
-  let t=0;addEventListener('scroll',()=>{if(scrollY>innerHeight*.5)box.hidden=true;clearTimeout(t);t=setTimeout(()=>{try{localStorage.setItem(K,String(Math.round(scrollY)))}catch(_){}},800)},{passive:true});
+  const anchors=()=>[...document.querySelectorAll('main .box[id], main .say, main .ch')];
+  function snap(){const els=anchors();let best=null,bd=1e9;for(const e of els){const r=e.getBoundingClientRect();const dd=Math.abs(r.top);if(r.bottom>0&&dd<bd){bd=dd;best=e}}
+    if(!best)return null;const i=els.indexOf(best);return{i,off:Math.round(-best.getBoundingClientRect().top),y:Math.round(scrollY),caps:pins.map(p=>p.k)}}
+  function restore(){if(!sv)return;const el=anchors()[sv.i];const top=el?el.getBoundingClientRect().top+scrollY+sv.off:sv.y;
+    if(Array.isArray(sv.caps)&&pinMode==='swipe')pins.forEach((pn,j)=>{const k=sv.caps[j];if(k>0&&k<pn.n){pn.k=k;pn.caps.forEach((c,x)=>c.classList.toggle('on',x===k));pn.dots.forEach((d,x)=>d.classList.toggle('on',x===k));pinPlace(pn,0,false)}});
+    scrollTo({top,behavior:'smooth'})}
+  if(sv&&sv.y>innerHeight*1.5&&scrollY<50){box.hidden=false;setTimeout(()=>box.hidden=true,9000)}
+  document.getElementById('rGo').onclick=()=>{box.hidden=true;restore()};
+  document.getElementById('rNo').onclick=()=>{box.hidden=true;sv=null;try{localStorage.removeItem(K)}catch(_){}};
+  let t=0;const save=()=>{const v=snap();if(v)try{localStorage.setItem(K,JSON.stringify(v))}catch(_){}};
+  addEventListener('scroll',()=>{if(scrollY>innerHeight*.5)box.hidden=true;clearTimeout(t);t=setTimeout(save,800)},{passive:true});
+  document.addEventListener('pointerup',()=>{clearTimeout(t);t=setTimeout(save,600)},{passive:true});
+  addEventListener('pagehide',save);
 })();
 // ambiente da intro: pó, fagulhas, vento, névoa
 (()=>{const cv=document.getElementById('amb'),g=cv.getContext('2d');let W=0,H=0,mode='po',P=[];
