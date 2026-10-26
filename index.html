@@ -528,6 +528,10 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <canvas class="art"></canvas>
     <div class="cap bot">Vestido com a roupa de um morto.</div></div></div>
 
+  <div class="v"><div class="box real" id="g3" style="aspect-ratio:768/1376"><div class="shade"></div><span class="id">26 · G3 · o Faria</span>
+    <canvas class="art"></canvas>
+    <div class="cap bot">É o Faria. Vivo, e de mau humor.</div></div></div>
+
   <div class="say it amber pad" data-snd="fim" style="min-height:70vh"><p>Continua…</p></div>
 
   <section class="end pad"><button type="button" id="again">Ver outra vez</button></section>
@@ -1217,7 +1221,7 @@ animImg('s1','s1.webp',(g,img,W,H,ms,st)=>{
 const CAM={shake:true,vig:true,leak:true,dof:true};
 try{Object.assign(CAM,JSON.parse(localStorage.getItem('cam')||'{}'))}catch(_){}
 const DOF={f1:[.5,.24,.3],fn1:[.42,.4,.3],pf:[.47,.25,.3],p5:[.6,.4,.32],f1b:[.5,.5,.5],c1:[.5,.3,.4]};
-const BEACH=new Set(['p1','p1b','pf','p2','p3','p4','p5','pw','p6','p6b','p7','g1','g2']);
+const BEACH=new Set(['p1','p1b','pf','p2','p3','p4','p5','pw','p6','p6b','p7','g1','g2','g3']);
 function makeDof(img,f){try{const w=img.naturalWidth,h=img.naturalHeight,c=document.createElement('canvas');c.width=w;c.height=h;const q=c.getContext('2d');
   if(!('filter' in q))return null;q.filter=`blur(${Math.round(w/180)}px)`;q.drawImage(img,0,0);q.filter='none';
   q.globalCompositeOperation='destination-out';const r=Math.max(w,h)*f[2],rg=q.createRadialGradient(w*f[0],h*f[1],r*.35,w*f[0],h*f[1],r);
@@ -1243,7 +1247,7 @@ function gen(id,src,mode){
   });
 }
 [['f2','storm'],['c1','calm'],['rk','storm'],['f1b','storm'],['t2','storm'],['fn1','storm'],['t4','storm'],['p0','storm'],
- ['tw','storm'],['vc','storm'],['il','storm'],['t1b','storm'],['t3','storm'],['p1','calm'],['p1b','calm'],['pf','calm'],['p2','calm'],['p3','sea'],['p4','sea'],['p5','calm'],['pw','calm'],['g2','calm'],['p6','calm'],['p6b','calm'],['p7','calm'],['g1','sea']].forEach(([id,m])=>gen(id,(id==='f1x'?'f1':id)+'.webp',m));
+ ['tw','storm'],['vc','storm'],['il','storm'],['t1b','storm'],['t3','storm'],['p1','calm'],['p1b','calm'],['pf','calm'],['p2','calm'],['p3','sea'],['p4','sea'],['p5','calm'],['pw','calm'],['g2','calm'],['g3','sea'],['p6','calm'],['p6b','calm'],['p7','calm'],['g1','sea']].forEach(([id,m])=>gen(id,(id==='f1x'?'f1':id)+'.webp',m));
 // costura desenhada à mão entre imagens coladas: traço de pincel a tinta
 let seamN=0;function seamSVG(){return '<i class="seam" aria-hidden="true"></i>'}
 function diagJoin(v,dir,k=.065){const w=v.querySelector('.box').offsetWidth,d=Math.max(3,Math.round(w*k));v.classList.add('diag');v.style.setProperty('--dg',d+'px');
