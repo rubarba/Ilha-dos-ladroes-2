@@ -221,13 +221,17 @@ body.noonom .onom{display:none}
 .v.capout .dots{top:calc(100% + 92px);bottom:auto}
 .v.capout .swh{top:calc(100% + 108px);bottom:auto}
 .dots{position:absolute;left:0;right:0;bottom:7%;display:flex;justify-content:center;gap:8px;z-index:3}
-.dots i{width:6px;height:6px;border-radius:50%;background:rgba(var(--dot),.35);transition:background .3s,transform .3s}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(233,223,196,.35);border:1.5px solid #000;box-shadow:1px 1px 0 rgba(0,0,0,.5);transition:background .3s,transform .3s}
 .pin.swipe{height:auto!important}.pin.swipe .pinin{position:relative;top:0}
 .pin.swipe .box{touch-action:pan-y;cursor:grab}
 .swh{position:absolute;left:0;right:0;bottom:2.5%;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.7);z-index:3;opacity:0;transition:opacity .6s}
 .pin.swipe .swh{opacity:1}.pin.swipe.used .swh{opacity:0}
 .pcap.l{transform:translateX(-30px)}.pcap.r{transform:translateX(30px)}
-.dots i.on{background:rgb(var(--dot));transform:scale(1.25)}
+.dots i.on{background:#e9dfc4;transform:scale(1.3)}
+body.boxcap .pcap.more{padding-right:30px!important;cursor:pointer}
+body.boxcap .pcap.more::after{content:"";position:absolute;right:11px;top:50%;width:7px;height:7px;margin-top:-5px;border-right:2.5px solid #17130e;border-top:2.5px solid #17130e;transform:rotate(45deg);animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,55%,100%{translate:0 0}28%{translate:4px 0}}
+@media (prefers-reduced-motion:reduce){body.boxcap .pcap.more::after{animation:none}}
 .cap{color:#fff;text-wrap:balance;-webkit-hyphens:none;hyphens:none;position:absolute;left:0;right:0;z-index:2;padding:0 26px;text-align:center;font-size:clamp(22px,6.4vw,27px);line-height:1.22;
   text-shadow:0 1px 4px #000,0 0 22px rgba(0,0,0,.8);opacity:0;transition:opacity 1s,transform 1s}
 .cap::before{content:"";position:absolute;inset:-40px -10px;background:radial-gradient(closest-side,rgba(0,0,0,.5),transparent);z-index:-1}
@@ -837,6 +841,10 @@ let blurOn=true,lastY=scrollY,shake=0;
 const pins=[...document.querySelectorAll('.pin')].map(el=>{const inn=el.querySelector('.pinin');return{el,inn,n:+el.dataset.steps,k:0,caps:[...el.querySelectorAll('.pcap')],dots:[...el.querySelectorAll('.dots i')],h:0,pt:0}});
 function sizePins(){for(const pn of pins){if(pinMode==='swipe'){pn.el.style.height='';continue}pn.h=pn.inn.offsetHeight;pn.pt=Math.max(0,(innerHeight-pn.h)/2);pn.inn.style.setProperty('--pt',pn.pt+'px');pn.el.style.height=(pn.h+pn.n*innerHeight*.45)+'px'}}
 sizePins();addEventListener('resize',sizePins);
+function capMore(){for(const pn of pins)pn.caps.forEach((c,i)=>{if(i>=pn.caps.length-1)return;c.classList.add('more');c.style.pointerEvents='auto';
+  c.addEventListener('click',e=>{e.stopPropagation();if(!c.classList.contains('on')&&pinMode!=='swipe')return;
+    if(pinMode==='swipe'){pn.k=i+1;pn.dots.forEach((x,j)=>x.classList.toggle('on',j===pn.k));pinPlace(pn,0,true);pn.el.classList.add('used')}else pinGo(pn,i+1,1)})})}
+setTimeout(()=>{capMore();try{tightBoxes()}catch(_){}},0);
 function pinGo(pn,k,dir){k=Math.max(0,Math.min(pn.n-1,k));if(k===pn.k)return;pn.k=k;
   pn.caps.forEach((c,i)=>{c.classList.remove('l','r');if(i===k){c.classList.add(dir>0?'r':'l');void c.offsetWidth;c.classList.remove('l','r');c.classList.add('on')}else c.classList.remove('on')});
   pn.dots.forEach((d,i)=>d.classList.toggle('on',i===k))}
@@ -1234,7 +1242,7 @@ document.body.classList.add('clean');
 function tightBoxes(){if(!document.body.classList.contains('boxcap'))return;
   document.querySelectorAll('.cap,.pcap,.say.ctxsay .yb').forEach(el=>{el.style.width='';const r=document.createRange();r.selectNodeContents(el);
     let mx=0;for(const q of r.getClientRects())mx=Math.max(mx,q.width);if(!mx)return;const cs=getComputedStyle(el);
-    el.style.width=Math.ceil(mx+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth)+1)+'px'})}
+    el.style.width=cs.boxSizing!=='border-box'?Math.ceil(mx+1)+'px':Math.ceil(mx+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth)+1)+'px'})}
 addEventListener('load',tightBoxes);addEventListener('resize',()=>setTimeout(tightBoxes,50));try{document.fonts.ready.then(tightBoxes)}catch(_){}
 let BOX=true,ONOM=true;try{BOX=localStorage.getItem('boxcap')!=='0';ONOM=localStorage.getItem('onom')!=='0'}catch(_){}
 document.body.classList.toggle('boxcap',BOX);document.body.classList.toggle('noonom',!ONOM);
