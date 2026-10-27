@@ -120,6 +120,12 @@ body.cv-rumos .carto .rumos{stroke-dasharray:1;stroke-dashoffset:1;animation:cvd
 .cflash{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse 80% 55% at 72% 18%,rgba(200,215,245,.22),transparent 70%)}
 body.cv-clarao .cflash{animation:cvflash 11s linear 2s infinite}
 @keyframes cvflash{0%,88%{opacity:0}89%{opacity:.9}90%{opacity:.15}91.5%{opacity:.7}96%,100%{opacity:0}}
+.cover h1 .lt{display:inline-block;white-space:pre}
+body.cv-luz .cover h1{animation:cvluz 11s linear 2s infinite}
+@keyframes cvluz{0%,88%{text-shadow:0 2px 30px rgba(0,0,0,.8)}89%{text-shadow:0 0 18px rgba(215,228,255,.95),0 0 2px #fff,0 2px 30px rgba(0,0,0,.8)}90%{text-shadow:0 2px 30px rgba(0,0,0,.8)}91.5%{text-shadow:0 0 14px rgba(215,228,255,.7),0 2px 30px rgba(0,0,0,.8)}96%,100%{text-shadow:0 2px 30px rgba(0,0,0,.8)}}
+body.cv-onda .cover h1 .lt{animation:cvonda 4.5s ease-in-out infinite;animation-delay:calc(var(--i) * -.18s)}
+@keyframes cvonda{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -3px;rotate:-1.5deg}}
+@media (prefers-reduced-motion:reduce){.cover h1,.cover h1 .lt{animation:none!important}}
 @media (prefers-reduced-motion:reduce){body .carto .rose1,body .carto .rose2,body .carto .rumos,body .cflash{animation:none!important;stroke-dashoffset:0}}
 .cover{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding-block:8svh 4svh;isolation:isolate}
 .coverCv{position:absolute;top:0;bottom:0;left:50%;width:100vw;height:100%;transform:translateX(-50%) scale(1.12);z-index:-2;display:block;filter:blur(14.5px) brightness(.42) saturate(.9);
@@ -335,7 +341,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <div class="lab" style="margin-top:16px">Legendas na mesma imagem</div>
     <div class="tg"><button type="button" data-pin="swipe" aria-pressed="true">Deslizar para o lado</button><button type="button" data-pin="scroll" aria-pressed="false">Com o scroll</button></div>
     <div class="lab" style="margin-top:16px">Capa: animação</div>
-    <div class="tg" id="cvSel"><button type="button" data-cv="rosa">Bússola</button><button type="button" data-cv="rumos">Rumos</button><button type="button" data-cv="clarao">Clarão</button></div>
+    <div class="tg" id="cvSel"><button type="button" data-cv="clarao">Clarão</button><button type="button" data-cv="luz">Título iluminado</button><button type="button" data-cv="onda">Título a ondular</button></div>
     <div class="lab" style="margin-top:16px">Ambiente da intro</div>
     <div class="tg" id="ambSel"><button type="button" data-amb="nevoa" aria-pressed="false">Névoa</button><button type="button" data-amb="chuva" aria-pressed="false">Chuva</button><button type="button" data-amb="po" aria-pressed="false">Pó</button><button type="button" data-amb="nada" aria-pressed="true">Nada</button></div>
     <div class="lab" style="margin-top:16px">Banda sonora</div>
@@ -1382,9 +1388,10 @@ try{history.scrollRestoration='manual'}catch(_){}
   function set(m){mode=m;bs.forEach(b=>b.setAttribute('aria-pressed',b.dataset.amb===m));seed();try{localStorage.setItem('amb3',m)}catch(_){}}
   bs.forEach(b=>b.onclick=()=>set(b.dataset.amb));set(mode);
 })();
-{let CV=['rosa','clarao'];try{const v=localStorage.getItem('capaFx');if(v!==null)CV=v?v.split(','):[]}catch(_){}
+{const h=document.querySelector('.cover h1');let n=0;h.innerHTML=h.innerHTML.split(/(<br>)/).map(p=>p==='<br>'?p:[...p].map(ch=>`<span class="lt" style="--i:${n++}">${ch}</span>`).join('')).join('')}
+{let CV=['clarao','luz'];try{const v=localStorage.getItem('capaFx2');if(v!==null)CV=v?v.split(','):[]}catch(_){}
   const bs=[...document.querySelectorAll('[data-cv]')];
-  const apply=()=>{for(const k of['rosa','rumos','clarao'])document.body.classList.toggle('cv-'+k,CV.includes(k));bs.forEach(b=>b.setAttribute('aria-pressed',CV.includes(b.dataset.cv)));try{localStorage.setItem('capaFx',CV.join(','))}catch(_){}};
+  const apply=()=>{for(const k of['clarao','luz','onda'])document.body.classList.toggle('cv-'+k,CV.includes(k));bs.forEach(b=>b.setAttribute('aria-pressed',CV.includes(b.dataset.cv)));try{localStorage.setItem('capaFx2',CV.join(','))}catch(_){}};
   bs.forEach(b=>b.onclick=()=>{const k=b.dataset.cv;CV=CV.includes(k)?CV.filter(x=>x!==k):[...CV,k];
     if(k==='rumos'&&CV.includes(k)){document.body.classList.remove('cv-rumos');void document.body.offsetWidth}apply()});apply()}
 document.querySelectorAll('[data-cam]').forEach(b=>{const k=b.dataset.cam;b.setAttribute('aria-pressed',CAM[k]);
