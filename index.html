@@ -109,6 +109,18 @@ body.hideui .burger,body.hideui .sndbtn{transform:translateY(-70px);opacity:0}
 button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 
 /* capa */
+.carto .rose1,.carto .rose2{transform-box:view-box}
+.carto .rose1{transform-origin:70px 140px}.carto .rose2{transform-origin:330px 470px}
+body.cv-rosa .carto .rose1{animation:cvspin 80s linear infinite}
+body.cv-rosa .carto .rose2{animation:cvspin 120s linear infinite reverse}
+@keyframes cvspin{to{rotate:360deg}}
+body.cv-rumos .carto .rumos{stroke-dasharray:1;stroke-dashoffset:1;animation:cvdraw 6s ease-out .4s forwards,cvpulse 7s ease-in-out 6.4s infinite}
+@keyframes cvdraw{to{stroke-dashoffset:0}}
+@keyframes cvpulse{0%,100%{opacity:.18}50%{opacity:.3}}
+.cflash{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse 80% 55% at 72% 18%,rgba(200,215,245,.22),transparent 70%)}
+body.cv-clarao .cflash{animation:cvflash 11s linear 2s infinite}
+@keyframes cvflash{0%,88%{opacity:0}89%{opacity:.9}90%{opacity:.15}91.5%{opacity:.7}96%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){body .carto .rose1,body .carto .rose2,body .carto .rumos,body .cflash{animation:none!important;stroke-dashoffset:0}}
 .cover{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding-block:8svh 4svh;isolation:isolate}
 .coverCv{position:absolute;top:0;bottom:0;left:50%;width:100vw;height:100%;transform:translateX(-50%) scale(1.12);z-index:-2;display:block;filter:blur(14.5px) brightness(.42) saturate(.9);
   -webkit-mask-image:linear-gradient(#000 55%,transparent 99%);mask-image:linear-gradient(#000 55%,transparent 99%)}
@@ -322,8 +334,10 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
       <label for="vSfx">Efeitos</label><input type="range" id="vSfx" min="0" max="100" value="55"></div>
     <div class="lab" style="margin-top:16px">Legendas na mesma imagem</div>
     <div class="tg"><button type="button" data-pin="swipe" aria-pressed="true">Deslizar para o lado</button><button type="button" data-pin="scroll" aria-pressed="false">Com o scroll</button></div>
+    <div class="lab" style="margin-top:16px">Capa: animação</div>
+    <div class="tg" id="cvSel"><button type="button" data-cv="rosa">Bússola</button><button type="button" data-cv="rumos">Rumos</button><button type="button" data-cv="clarao">Clarão</button></div>
     <div class="lab" style="margin-top:16px">Ambiente da intro</div>
-    <div class="tg" id="ambSel"><button type="button" data-amb="nevoa" aria-pressed="false">Névoa</button><button type="button" data-amb="chuva" aria-pressed="false">Chuva</button><button type="button" data-amb="nada" aria-pressed="true">Nada</button></div>
+    <div class="tg" id="ambSel"><button type="button" data-amb="nevoa" aria-pressed="false">Névoa</button><button type="button" data-amb="chuva" aria-pressed="false">Chuva</button><button type="button" data-amb="po" aria-pressed="false">Pó</button><button type="button" data-amb="nada" aria-pressed="true">Nada</button></div>
     <div class="lab" style="margin-top:16px">Banda sonora</div>
     <div class="acts"><button type="button" id="mOrig" aria-pressed="true">Original · em código</button><button type="button" id="mNova" aria-pressed="false">Nova · orquestral</button></div></div>
   <div><div class="lab">Protótipo</div>
@@ -366,6 +380,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
   <section class="cover pad" data-snd="titulo">
     <canvas class="coverCv" id="coverCv" aria-hidden="true" hidden></canvas>
     <div class="carto" data-carto="capa" style="z-index:-1"></div>
+    <div class="cflash" aria-hidden="true"></div>
     <div class="ctex" aria-hidden="true"></div>
     <div class="sway">
     <span class="ep">EPISÓDIO VI</span>
@@ -809,10 +824,10 @@ function applyRough(){boxes.forEach((b,i)=>{const r=b.getBoundingClientRect();if
   const isl=(cx,cy,r)=>{const pts=[];for(let i=0;i<=22;i++){const a=i/22*6.283,rr=r*(1+Math.sin(a*3+1)*.18+Math.sin(a*5)*.1);pts.push([cx+Math.cos(a)*rr*1.25,cy+Math.sin(a)*rr])}return pts};
   const D={
     capa:()=>{let rh='';for(const[x,y,n]of[[70,140,32],[330,470,32]])for(let i=0;i<n;i++){const a=i/n*6.283;rh+=line(x,y,x+Math.cos(a)*700,y+Math.sin(a)*700,26)+' '}
-      return `<path d="${rh}" stroke="currentColor" stroke-width=".45" fill="none" opacity=".18"/>
-      <path d="${circ(70,140,30)} ${circ(70,140,26)}" stroke="currentColor" stroke-width=".7" fill="none" opacity=".35"/>
-      <path d="${star(70,140,28,6,8,.3927)}" stroke="currentColor" stroke-width=".6" fill="none" opacity=".3"/><path d="${star(70,140,26,6,4)}" stroke="currentColor" stroke-width=".8" fill="currentColor" fill-opacity=".08" opacity=".45"/>
-      <path d="${star(330,470,24,5,8)}" stroke="currentColor" stroke-width=".7" fill="none" opacity=".35"/>`},
+      return `<path class="rumos" pathLength="1" d="${rh}" stroke="currentColor" stroke-width=".45" fill="none" opacity=".18"/>
+      <g class="rose1"><path d="${circ(70,140,30)} ${circ(70,140,26)}" stroke="currentColor" stroke-width=".7" fill="none" opacity=".35"/>
+      <path d="${star(70,140,28,6,8,.3927)}" stroke="currentColor" stroke-width=".6" fill="none" opacity=".3"/><path d="${star(70,140,26,6,4)}" stroke="currentColor" stroke-width=".8" fill="currentColor" fill-opacity=".08" opacity=".45"/></g>
+      <g class="rose2"><path d="${star(330,470,24,5,8)}" stroke="currentColor" stroke-width=".7" fill="none" opacity=".35"/></g>`},
     // Outono de 1540: a costa da China e a rota dos quatro juncos
     rumo:()=>{const ib=P(113.4,21);const route=[P(106.6,9),P(109.8,12.5),P(110.8,16.5),P(112.2,19.6),[ib[0]-6,ib[1]+10]];
       return `<path d="${sm(coast)} ${sm(hain,1)}" stroke="currentColor" stroke-width="1" fill="none" opacity=".32"/>
@@ -1367,6 +1382,11 @@ try{history.scrollRestoration='manual'}catch(_){}
   function set(m){mode=m;bs.forEach(b=>b.setAttribute('aria-pressed',b.dataset.amb===m));seed();try{localStorage.setItem('amb3',m)}catch(_){}}
   bs.forEach(b=>b.onclick=()=>set(b.dataset.amb));set(mode);
 })();
+{let CV=['rosa','clarao'];try{const v=localStorage.getItem('capaFx');if(v!==null)CV=v?v.split(','):[]}catch(_){}
+  const bs=[...document.querySelectorAll('[data-cv]')];
+  const apply=()=>{for(const k of['rosa','rumos','clarao'])document.body.classList.toggle('cv-'+k,CV.includes(k));bs.forEach(b=>b.setAttribute('aria-pressed',CV.includes(b.dataset.cv)));try{localStorage.setItem('capaFx',CV.join(','))}catch(_){}};
+  bs.forEach(b=>b.onclick=()=>{const k=b.dataset.cv;CV=CV.includes(k)?CV.filter(x=>x!==k):[...CV,k];
+    if(k==='rumos'&&CV.includes(k)){document.body.classList.remove('cv-rumos');void document.body.offsetWidth}apply()});apply()}
 document.querySelectorAll('[data-cam]').forEach(b=>{const k=b.dataset.cam;b.setAttribute('aria-pressed',CAM[k]);
   b.onclick=()=>{CAM[k]=!CAM[k];b.setAttribute('aria-pressed',CAM[k]);try{localStorage.setItem('cam',JSON.stringify(CAM))}catch(_){}}});
 document.querySelectorAll('[data-pin]').forEach(b=>b.onclick=()=>setPinMode(b.dataset.pin));setPinMode(pinMode);
