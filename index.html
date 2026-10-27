@@ -346,7 +346,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <div class="lab" style="margin-top:16px">Legendas na mesma imagem</div>
     <div class="tg"><button type="button" data-pin="swipe" aria-pressed="true">Deslizar para o lado</button><button type="button" data-pin="scroll" aria-pressed="false">Com o scroll</button></div>
     <div class="lab" style="margin-top:16px">Capa: animação</div>
-    <div class="tg" id="cvSel"><button type="button" data-cv="clarao">Clarão</button><button type="button" data-cv="treme">Título a tremelicar</button></div>
+    <div class="tg" id="cvSel"><button type="button" data-cv="clarao">Clarão</button></div>
     <div class="lab" style="margin-top:16px">Ambiente da intro</div>
     <div class="tg" id="ambSel"><button type="button" data-amb="nevoa" aria-pressed="false">Névoa</button><button type="button" data-amb="chuva" aria-pressed="false">Chuva</button><button type="button" data-amb="po" aria-pressed="false">Pó</button><button type="button" data-amb="nada" aria-pressed="true">Nada</button></div>
     <div class="lab" style="margin-top:16px">Banda sonora</div>
@@ -1394,9 +1394,9 @@ try{history.scrollRestoration='manual'}catch(_){}
   bs.forEach(b=>b.onclick=()=>set(b.dataset.amb));set(mode);
 })();
 {const h=document.querySelector('.cover h1');let n=0;h.innerHTML=h.innerHTML.split(/(<br>)/).map(p=>p==='<br>'?p:[...p].map(ch=>`<span class="lt" style="--i:${n++}">${ch}</span>`).join('')).join('')}
-{let CV=['clarao','treme'];try{const v=localStorage.getItem('capaFx3');if(v!==null)CV=v?v.split(','):[]}catch(_){}
+{let CV=['clarao'];try{const v=localStorage.getItem('capaFx3');if(v!==null)CV=v?v.split(','):[]}catch(_){}
   const bs=[...document.querySelectorAll('[data-cv]')];
-  const apply=()=>{for(const k of['clarao','treme'])document.body.classList.toggle('cv-'+k,CV.includes(k));bs.forEach(b=>b.setAttribute('aria-pressed',CV.includes(b.dataset.cv)));try{localStorage.setItem('capaFx3',CV.join(','))}catch(_){}};
+  const apply=()=>{for(const k of['clarao'])document.body.classList.toggle('cv-'+k,CV.includes(k));bs.forEach(b=>b.setAttribute('aria-pressed',CV.includes(b.dataset.cv)));try{localStorage.setItem('capaFx3',CV.join(','))}catch(_){}};
   bs.forEach(b=>b.onclick=()=>{const k=b.dataset.cv;CV=CV.includes(k)?CV.filter(x=>x!==k):[...CV,k];
     if(k==='rumos'&&CV.includes(k)){document.body.classList.remove('cv-rumos');void document.body.offsetWidth}apply()});apply()}
 document.querySelectorAll('[data-cam]').forEach(b=>{const k=b.dataset.cam;b.setAttribute('aria-pressed',CAM[k]);
