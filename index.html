@@ -314,7 +314,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <button type="button" id="mCred">Créditos</button>
   </div>
   <div><div class="lab">Som</div>
-    <div class="acts" style="margin-bottom:12px"><button type="button" id="mSound" aria-pressed="false">Som: desligado</button><button type="button" id="mPrint" aria-pressed="true" style="margin-left:8px">Papel antigo: sim</button><button type="button" id="mFull" hidden style="margin-left:8px">Ecrã inteiro</button></div><script>(()=>{const p=document.getElementById('mPrint');const sync=()=>{const on=!document.body.classList.contains('noprint');p.textContent='Papel antigo: '+(on?'sim':'não');p.setAttribute('aria-pressed',on)};setTimeout(sync,0);p.onclick=()=>{document.body.classList.toggle('noprint');try{localStorage.setItem('print',document.body.classList.contains('noprint')?'0':'1')}catch(_){}sync()}})();(()=>{const b=document.getElementById('mFull'),d=document,el=d.documentElement,req=el.requestFullscreen||el.webkitRequestFullscreen,ex=d.exitFullscreen||d.webkitExitFullscreen;if(!req||!(d.fullscreenEnabled||d.webkitFullscreenEnabled))return;b.hidden=false;const fs=()=>d.fullscreenElement||d.webkitFullscreenElement;b.onclick=()=>{try{fs()?ex.call(d):req.call(el)}catch(_){}};d.addEventListener('fullscreenchange',()=>b.textContent=fs()?'Sair do ecrã inteiro':'Ecrã inteiro')})()</script>
+    <div class="acts" style="margin-bottom:12px"><button type="button" id="mSound" aria-pressed="false">Som: desligado</button><button type="button" id="mFull" hidden style="margin-left:8px">Ecrã inteiro</button></div><script>(()=>{const b=document.getElementById('mFull'),d=document,el=d.documentElement,req=el.requestFullscreen||el.webkitRequestFullscreen,ex=d.exitFullscreen||d.webkitExitFullscreen;if(!req||!(d.fullscreenEnabled||d.webkitFullscreenEnabled))return;b.hidden=false;const fs=()=>d.fullscreenElement||d.webkitFullscreenElement;b.onclick=()=>{try{fs()?ex.call(d):req.call(el)}catch(_){}};d.addEventListener('fullscreenchange',()=>b.textContent=fs()?'Sair do ecrã inteiro':'Ecrã inteiro')})()</script>
     <div class="vol"><label for="vMus">Música</label><input type="range" id="vMus" min="0" max="100" value="60">
       <label for="vSfx">Efeitos</label><input type="range" id="vSfx" min="0" max="100" value="55"></div>
     <div class="lab" style="margin-top:16px">Legendas na mesma imagem</div>
@@ -1273,7 +1273,7 @@ function diagJoin(v,dir,k=.065){const w=v.querySelector('.box').offsetWidth,d=Ma
   v.style.setProperty('--clip',dir>0?`polygon(0 ${d}px,100% 0,100% 100%,0 100%)`:`polygon(0 0,100% ${d}px,100% 100%,0 100%)`);
   v.insertAdjacentHTML('beforeend',`<svg class="dseam" viewBox="0 0 ${w} ${d}" style="height:${d}px" aria-hidden="true"><line x1="0" y1="${dir>0?d:0}" x2="${w}" y2="${dir>0?0:d}" stroke="#000" stroke-width="10" stroke-linecap="square"/></svg>`)}
 document.body.classList.add('clean');
-document.querySelectorAll('main .box.real, main .frozen .box').forEach(b=>b.insertAdjacentHTML('beforeend','<i class="print" aria-hidden="true"></i>'));
+
 let PRINT=true;try{PRINT=localStorage.getItem('print')!=='0'}catch(_){}document.body.classList.toggle('noprint',!PRINT);
 // caixas de legenda justas ao texto (sem espaço vazio à direita)
 function tightBoxes(){if(!document.body.classList.contains('boxcap'))return;
@@ -1282,7 +1282,8 @@ function tightBoxes(){if(!document.body.classList.contains('boxcap'))return;
     el.style.width=cs.boxSizing!=='border-box'?Math.ceil(mx+1)+'px':Math.ceil(mx+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth)+1)+'px'})}
 function dotsAlign(){for(const pn of pins){const d=pn.el.querySelector('.dots'),c=pn.caps[Math.max(0,pn.k)]||pn.caps[0];if(!d||!c)continue;
   if(!document.body.classList.contains('boxcap')){d.style.left=d.style.width='';continue}
-  const b=c.offsetParent;if(!b)continue;d.style.left=c.offsetLeft+'px';d.style.right='auto';d.style.width=c.offsetWidth+'px'}}
+  const b=c.offsetParent;if(!b)continue;d.style.left=c.offsetLeft+'px';d.style.right='auto';d.style.width=c.offsetWidth+'px';d.style.bottom='auto';
+  const up=pn.el.classList.contains('top');d.style.top=(up?c.offsetTop-20:c.offsetTop+c.offsetHeight+12)+'px'}}
 addEventListener('load',()=>{tightBoxes();dotsAlign()});new MutationObserver(()=>requestAnimationFrame(dotsAlign)).observe(document.querySelector('main'),{subtree:true,attributes:true,attributeFilter:['class']});addEventListener('resize',()=>setTimeout(tightBoxes,50));try{document.fonts.ready.then(tightBoxes)}catch(_){}
 let BOX=true,ONOM=true;try{BOX=localStorage.getItem('boxcap')!=='0';ONOM=localStorage.getItem('onom')!=='0'}catch(_){}
 document.body.classList.toggle('boxcap',BOX);document.body.classList.toggle('noonom',!ONOM);
