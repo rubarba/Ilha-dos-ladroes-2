@@ -178,10 +178,10 @@ body.cv-treme .cover h1 .lt{animation:cvtreme .5s steps(1,end) infinite;animatio
 .say.multi p{font-size:clamp(22px,6.2vw,28px);max-width:20ch}
 
 .say i{font-family:var(--mono);font-style:normal;font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;max-width:34ch;line-height:1.6}
-.seal{display:inline-block;width:30px;height:30px;vertical-align:-10px;margin-right:10px;opacity:.6}
+.seal{display:inline-block;width:22px;height:22px;vertical-align:-6px;margin-right:10px;color:currentColor}
 .seal svg{width:100%;height:100%;display:block;overflow:visible}
-.seal.big{width:clamp(96px,28vw,128px);height:clamp(96px,28vw,128px);margin:0 0 6px;opacity:.85}
-.seal.mid{width:64px;height:64px;margin:20px 0 0;opacity:.5}
+.seal.big{width:64px;height:64px;margin:0 0 6px;color:#ece9e2;opacity:.9}
+.seal.mid{width:40px;height:40px;margin:20px 0 0;color:var(--muted)}
 .ch{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-block:6vh 2vh}
 
 /* imagens */
@@ -1319,7 +1319,7 @@ document.body.classList.add('clean');
 <path d="M24 64 Q34 67 50 67 Q66 67 76 61 L73 69 Q68 75 58 75 L38 75 Q28 74 24 64Z" stroke-width="1.6"/>
 <path d="M22 81 Q27 78 32 81 T42 81 T52 81 T62 81 T72 81 T78 80" stroke-width="1.2"/>
 </svg>`;
-document.querySelectorAll('[data-seal]').forEach(e=>e.innerHTML='<img src="selo.webp" alt="" style="width:100%;height:100%;display:block">')}
+document.querySelectorAll('[data-seal]').forEach(e=>e.innerHTML=`<svg viewBox="0 0 100 100" style="width:100%;height:100%;display:block"><circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="5"/><path d="M50 2v8M50 90v8M2 50h8M90 50h8" stroke="currentColor" stroke-width="4"/><path d="M22 66 L30 46 L34 50 L42 24 L48 36 L52 30 L60 54 L65 46 L74 66Z" fill="currentColor"/><path d="M66 18 L58 34 L64 34 L56 48 L72 30 L66 30 L72 18Z" fill="currentColor"/><path d="M18 72 Q26 66 34 72 T50 72 T66 72 T82 72" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M26 82 Q34 76 42 82 T58 82 T74 82" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg>`)}
 
 
 let PRINT=true;try{PRINT=localStorage.getItem('print')!=='0'}catch(_){}document.body.classList.toggle('noprint',!PRINT);
