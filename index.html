@@ -191,10 +191,18 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .pcap::before{content:"";position:absolute;inset:-34px -6px;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);z-index:-1}
 .pin.top .pcap{bottom:auto;top:13%}
 /* caixas de texto à BD */
-body.boxcap .cap,body.boxcap .pcap{left:6%;right:auto;width:auto;max-width:78%;padding:8px 12px 7px;text-align:left;
+body.boxcap .cap,body.boxcap .pcap,body.boxcap .say.bd p{left:6%;right:auto;width:auto;max-width:78%;padding:8px 12px 7px;text-align:left;
   font-family:"Patrick Hand SC","Patrick Hand","Comic Sans MS",cursive;-webkit-text-stroke:.45px currentColor;font-size:clamp(17px,4.9vw,21px);line-height:1.15;letter-spacing:.02em;color:#17130e;text-shadow:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .2 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(ellipse 60% 80% at 85% 20%,rgba(120,85,40,.16),transparent 70%),radial-gradient(ellipse 50% 70% at 10% 90%,rgba(110,80,40,.14),transparent 70%),linear-gradient(180deg,#f3ead2,#e6d8b6);background-size:160px 160px,100% 100%,100% 100%,100% 100%;border:2px solid #0b0a08;box-shadow:3px 3px 0 rgba(0,0,0,.7);rotate:-1.2deg}
 body.boxcap .cap::before,body.boxcap .pcap::before{display:none}
+body.boxcap .say.bd p{position:relative;display:inline-block;width:auto;max-width:82%;font-style:normal;align-self:flex-start;margin-left:4%}
+body.boxcap .say.bd p:nth-child(even){rotate:1deg;align-self:flex-end;margin-right:4%}
+body.boxcap .say.bd.solo p{align-self:center;margin:0}
+body.boxcap .cover h1{font-family:"Patrick Hand SC","Patrick Hand",cursive;font-style:normal;-webkit-text-stroke:1.2px currentColor;letter-spacing:.01em;line-height:.92;font-size:clamp(54px,16vw,86px);rotate:-2deg}
+body.boxcap .cover .place{font-family:"Patrick Hand SC","Patrick Hand",cursive;-webkit-text-stroke:.5px currentColor;letter-spacing:.14em;font-size:clamp(20px,5.6vw,25px)}
+body.boxcap .cover p{font-family:"Patrick Hand SC","Patrick Hand",cursive;font-style:normal;-webkit-text-stroke:.35px currentColor;font-size:19px;letter-spacing:.02em}
+body.boxcap .cover .go{font-family:"Patrick Hand SC","Patrick Hand",cursive;-webkit-text-stroke:.4px currentColor;letter-spacing:.06em}
+body.boxcap .cover .ep{font-family:"Patrick Hand SC","Patrick Hand",cursive;font-size:16px;letter-spacing:.24em;color:#e9dfc4}
 body.boxcap .cap.bot,body.boxcap .pin:not(.top) .pcap{bottom:15%}
 body.boxcap .cap.top,body.boxcap .pin.top .pcap{top:12%}
 body.boxcap .v.capout .cap,body.boxcap .v.capout .pcap{left:4%;font-size:clamp(17px,4.9vw,21px);color:#17130e}
@@ -376,7 +384,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <div class="bill"><span>A partir da Peregrinação · 1614</span><span class="hint">use auscultadores · desliza ↓</span></div>
   </section>
 
-  <div class="say it multi pad" style="min-height:55vh;justify-content:flex-start;padding-top:12vh"><p>Chamo‑me Fernão Mendes Pinto.</p><p>Saí de Portugal aos 21 anos, a jurar que voltava rico.</p><p>Desde então, fui preso treze vezes. Vendido dezassete.</p><p>A fortuna ainda não chegou. Sou um homem paciente.</p></div>
+  <div class="say it multi bd pad" style="min-height:55vh;justify-content:flex-start;padding-top:12vh"><p>Chamo‑me Fernão Mendes Pinto.</p><p>Saí de Portugal aos 21 anos, a jurar que voltava rico.</p><p>Desde então, fui preso treze vezes. Vendido dezassete.</p><p>A fortuna ainda não chegou. Sou um homem paciente.</p></div>
   <div class="say it pad ctxsay" style="min-height:45vh"><div class="carto" data-carto="rumo"></div><span class="yb">Outono de 1540.<br>Mar da China.</span><p>Outono de 1540.<br>Mar da China.</p></div>
 
   <div class="ch pad" data-snd="tempestade">1 · Tempestade</div>
@@ -473,7 +481,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div></div></div>
   </div>
 
-  <div class="say pad" data-snd="silencio" style="min-height:40vh"><p>E depois, nada.</p></div>
+  <div class="say bd solo pad" data-snd="silencio" style="min-height:40vh"><p>E depois, nada.</p></div>
   <div class="say pad" style="min-height:40vh"><div class="carto" data-carto="rosa"></div></div>
   <div class="say it pad ctxsay" data-tint="manha" style="min-height:40vh"><span class="yb">Na manhã seguinte…</span><p>Na manhã seguinte…</p></div>
 
@@ -544,7 +552,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <canvas class="art"></canvas>
     <div class="cap bot">É o Faria. Vivo, e de mau humor.</div></div></div>
 
-  <div class="say it amber pad" data-snd="fim" style="min-height:70vh"><p>Continua…</p></div>
+  <div class="say bd solo pad" data-snd="fim" style="min-height:70vh"><p>Continua…</p></div>
 
   <section class="end pad"><button type="button" id="again">Ver outra vez</button></section>
 </main>
@@ -1277,7 +1285,7 @@ document.body.classList.add('clean');
 let PRINT=true;try{PRINT=localStorage.getItem('print')!=='0'}catch(_){}document.body.classList.toggle('noprint',!PRINT);
 // caixas de legenda justas ao texto (sem espaço vazio à direita)
 function tightBoxes(){if(!document.body.classList.contains('boxcap'))return;
-  document.querySelectorAll('.cap,.pcap,.say.ctxsay .yb').forEach(el=>{el.style.width='';const r=document.createRange();r.selectNodeContents(el);
+  document.querySelectorAll('.cap,.pcap,.say.ctxsay .yb,.say.bd p').forEach(el=>{el.style.width='';const r=document.createRange();r.selectNodeContents(el);
     let mx=0;for(const q of r.getClientRects())mx=Math.max(mx,q.width);if(!mx)return;const cs=getComputedStyle(el);
     el.style.width=cs.boxSizing!=='border-box'?Math.ceil(mx+1)+'px':Math.ceil(mx+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth)+1)+'px'})}
 function dotsAlign(){for(const pn of pins){const d=pn.el.querySelector('.dots'),c=pn.caps[Math.max(0,pn.k)]||pn.caps[0];if(!d||!c)continue;
