@@ -232,11 +232,16 @@ body.noonom .onom{display:none}
 .pin.swipe .swh{opacity:1}.pin.swipe.used .swh{opacity:0}
 .pcap.l{transform:translateX(-30px)}.pcap.r{transform:translateX(30px)}
 .dots i.on{background:#e9dfc4;transform:scale(1.3)}
+.print{position:absolute;inset:0;z-index:4;pointer-events:none;mix-blend-mode:multiply;opacity:.55;
+  background:radial-gradient(circle at 50% 50%,rgba(60,40,20,.22) 0 32%,transparent 36%) 0 0/4px 4px,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .45 0 0 0 0 .3 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+  linear-gradient(rgba(240,222,180,.28),rgba(240,222,180,.28))}
+body.noprint .print{display:none}
 .hand{position:absolute;right:16%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:rgba(255,255,255,.9);border:2px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,.5);z-index:8;pointer-events:none;opacity:0;animation:hand 1.6s ease-in-out 2 .3s}
 @keyframes hand{0%{opacity:0;transform:translateX(0) scale(.8)}15%{opacity:1;transform:translateX(0) scale(1)}70%{opacity:1;transform:translateX(-120px) scale(1)}100%{opacity:0;transform:translateX(-140px) scale(.9)}}
 @media (prefers-reduced-motion:reduce){.hand{animation-duration:2.4s}}
 .pin.top .dots{top:calc(12% - 24px);bottom:auto}
-body.boxcap .pin .dots{justify-content:flex-start;padding-left:calc(6% + 6px)}
+body.boxcap .pin .dots{justify-content:center;padding:0}
 body.boxcap .pcap.more{padding-right:30px!important;cursor:pointer}
 body.boxcap .pcap.more::after{content:"";position:absolute;right:11px;top:50%;width:7px;height:7px;margin-top:-5px;border-right:2.5px solid #17130e;border-top:2.5px solid #17130e;transform:rotate(45deg);animation:nudge 1.8s ease-in-out infinite}
 @keyframes nudge{0%,55%,100%{translate:0 0}28%{translate:4px 0}}
@@ -309,7 +314,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
     <button type="button" id="mCred">Créditos</button>
   </div>
   <div><div class="lab">Som</div>
-    <div class="acts" style="margin-bottom:12px"><button type="button" id="mSound" aria-pressed="false">Som: desligado</button><button type="button" id="mFull" hidden style="margin-left:8px">Ecrã inteiro</button></div><script>(()=>{const b=document.getElementById('mFull'),d=document,el=d.documentElement,req=el.requestFullscreen||el.webkitRequestFullscreen,ex=d.exitFullscreen||d.webkitExitFullscreen;if(!req||!(d.fullscreenEnabled||d.webkitFullscreenEnabled))return;b.hidden=false;const fs=()=>d.fullscreenElement||d.webkitFullscreenElement;b.onclick=()=>{try{fs()?ex.call(d):req.call(el)}catch(_){}};d.addEventListener('fullscreenchange',()=>b.textContent=fs()?'Sair do ecrã inteiro':'Ecrã inteiro')})()</script>
+    <div class="acts" style="margin-bottom:12px"><button type="button" id="mSound" aria-pressed="false">Som: desligado</button><button type="button" id="mPrint" aria-pressed="true" style="margin-left:8px">Papel antigo: sim</button><button type="button" id="mFull" hidden style="margin-left:8px">Ecrã inteiro</button></div><script>(()=>{const p=document.getElementById('mPrint');const sync=()=>{const on=!document.body.classList.contains('noprint');p.textContent='Papel antigo: '+(on?'sim':'não');p.setAttribute('aria-pressed',on)};setTimeout(sync,0);p.onclick=()=>{document.body.classList.toggle('noprint');try{localStorage.setItem('print',document.body.classList.contains('noprint')?'0':'1')}catch(_){}sync()}})();(()=>{const b=document.getElementById('mFull'),d=document,el=d.documentElement,req=el.requestFullscreen||el.webkitRequestFullscreen,ex=d.exitFullscreen||d.webkitExitFullscreen;if(!req||!(d.fullscreenEnabled||d.webkitFullscreenEnabled))return;b.hidden=false;const fs=()=>d.fullscreenElement||d.webkitFullscreenElement;b.onclick=()=>{try{fs()?ex.call(d):req.call(el)}catch(_){}};d.addEventListener('fullscreenchange',()=>b.textContent=fs()?'Sair do ecrã inteiro':'Ecrã inteiro')})()</script>
     <div class="vol"><label for="vMus">Música</label><input type="range" id="vMus" min="0" max="100" value="60">
       <label for="vSfx">Efeitos</label><input type="range" id="vSfx" min="0" max="100" value="55"></div>
     <div class="lab" style="margin-top:16px">Legendas na mesma imagem</div>
@@ -458,7 +463,7 @@ body.clean .v.todo,body.clean .notes,body.clean .say i,body.clean .box .see,body
 
   <div class="v frozen" data-snd="crac"><div data-vib="220" class="box" data-k="seco" style="aspect-ratio:768/1376;background:#fff"><div class="shade"></div><img src="crac.webp" loading="lazy" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
     <span class="onom" style="top:34%;left:18%;--r:-8deg;font-size:clamp(64px,20vw,96px)">CRAC!</span>
-    <span class="caixa">E depois, a queda.</span></div></div>
+    <div class="cap bot">E depois, a queda.</div></div></div>
 
   <div class="pin" data-steps="2">
   <div class="v pinin" data-snd="agua"><div data-fx="sal coracao" data-vib="90,60,90" class="box real" id="s1" style="--ph:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAUAAgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCstjHHZs/mRKko5VV5YDnGfT2orGGqMNPI3bgflAP8P+c0VoZ2ZgAnymHuKKKKgs//2Q==);aspect-ratio:9/25;background:#000"><div class="shade"></div><span class="id">12 · S1 · debaixo de água</span>
@@ -1268,12 +1273,17 @@ function diagJoin(v,dir,k=.065){const w=v.querySelector('.box').offsetWidth,d=Ma
   v.style.setProperty('--clip',dir>0?`polygon(0 ${d}px,100% 0,100% 100%,0 100%)`:`polygon(0 0,100% ${d}px,100% 100%,0 100%)`);
   v.insertAdjacentHTML('beforeend',`<svg class="dseam" viewBox="0 0 ${w} ${d}" style="height:${d}px" aria-hidden="true"><line x1="0" y1="${dir>0?d:0}" x2="${w}" y2="${dir>0?0:d}" stroke="#000" stroke-width="10" stroke-linecap="square"/></svg>`)}
 document.body.classList.add('clean');
+document.querySelectorAll('main .box.real, main .frozen .box').forEach(b=>b.insertAdjacentHTML('beforeend','<i class="print" aria-hidden="true"></i>'));
+let PRINT=true;try{PRINT=localStorage.getItem('print')!=='0'}catch(_){}document.body.classList.toggle('noprint',!PRINT);
 // caixas de legenda justas ao texto (sem espaço vazio à direita)
 function tightBoxes(){if(!document.body.classList.contains('boxcap'))return;
   document.querySelectorAll('.cap,.pcap,.say.ctxsay .yb').forEach(el=>{el.style.width='';const r=document.createRange();r.selectNodeContents(el);
     let mx=0;for(const q of r.getClientRects())mx=Math.max(mx,q.width);if(!mx)return;const cs=getComputedStyle(el);
     el.style.width=cs.boxSizing!=='border-box'?Math.ceil(mx+1)+'px':Math.ceil(mx+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth)+1)+'px'})}
-addEventListener('load',tightBoxes);addEventListener('resize',()=>setTimeout(tightBoxes,50));try{document.fonts.ready.then(tightBoxes)}catch(_){}
+function dotsAlign(){for(const pn of pins){const d=pn.el.querySelector('.dots'),c=pn.caps[Math.max(0,pn.k)]||pn.caps[0];if(!d||!c)continue;
+  if(!document.body.classList.contains('boxcap')){d.style.left=d.style.width='';continue}
+  const b=c.offsetParent;if(!b)continue;d.style.left=c.offsetLeft+'px';d.style.right='auto';d.style.width=c.offsetWidth+'px'}}
+addEventListener('load',()=>{tightBoxes();dotsAlign()});new MutationObserver(()=>requestAnimationFrame(dotsAlign)).observe(document.querySelector('main'),{subtree:true,attributes:true,attributeFilter:['class']});addEventListener('resize',()=>setTimeout(tightBoxes,50));try{document.fonts.ready.then(tightBoxes)}catch(_){}
 let BOX=true,ONOM=true;try{BOX=localStorage.getItem('boxcap')!=='0';ONOM=localStorage.getItem('onom')!=='0'}catch(_){}
 document.body.classList.toggle('boxcap',BOX);document.body.classList.toggle('noonom',!ONOM);
 // onomatopeias: entram quando a imagem chega ao meio do ecrã, com impacto
